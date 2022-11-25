@@ -1,0 +1,66 @@
+@import '../../typography.scss';
+
+.main-page-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.main-page-menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  height: 100%;
+  max-width: 200px;
+  background-color: #3366ff;
+}
+
+.main-page-menu-title {
+  display: flex;
+  margin: 30px 10px 0 15px;
+  @extend .text-4;
+  color: white;
+}
+
+.menu-options-container {
+  margin-top: 100px;
+}
+
+.menu-option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px 10px 0 10px;
+
+  .mat-icon {
+    color: white;
+  }
+
+  .menu-option-text {
+    color: white;
+    margin-left: 10px;
+    @extend .text-2;
+  }
+}
+
+.welcome-message-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-image: url('../../images/telemedicineapp.jpeg');
+  background-size: cover;
+  background-position: left center;
+  margin-left: 100px;
+
+  .welcome-message {
+    width: 250px;
+    margin-bottom: 100px;
+    @extend .text-3;
+    color: #3366ff;
+    font-size: 35px;
+    line-height: 110%;
+    text-align: center;
+  }
+}
