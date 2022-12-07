@@ -10,12 +10,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { MedicalSpecialitiesComponent } from './medical-specialities/medical-specialities.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    MainPageComponent
+    MainPageComponent,
+    MedicalSpecialitiesComponent
   ],
   imports: [
     BrowserModule,

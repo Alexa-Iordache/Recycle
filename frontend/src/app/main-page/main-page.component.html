@@ -1,0 +1,22 @@
+<div class="main-page-container">
+  <div class="main-page-menu-container">
+    <div class="main-page-menu-title">Doctors's Appointment</div>
+
+    <div class="menu-options-container">
+      <div class="menu-option" *ngFor="let item of menuItems">
+        <!-- <button mat-flat-button class="login-page-button"> -->
+          <mat-icon class="menu-icon"> {{ item.icon }} </mat-icon>
+          <button mat-flat-button class="menu-option-text">{{ item.text }}</button>
+        <!-- </button> -->
+        <!-- <mat-icon class="menu-icon"> {{ item.icon }} </mat-icon> -->
+        <!-- <div class="menu-option-text"> {{ item.text }}</div> -->
+        <!-- routerLink="/crisis-list" -->
+      </div>
+    </div>
+  </div>
+  <div class="welcome-message-container">
+    <div class="welcome-message">
+      Bine ai venit in platforma digitala Doctor's Appoiment
+    </div>
+  </div>
+</div>
