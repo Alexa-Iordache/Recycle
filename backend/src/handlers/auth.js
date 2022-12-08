@@ -9,7 +9,7 @@ function comparePasswords(password, dbResult) {
 }
 
 let auth = {
-    login: function (req, res, next) {
+    login(req, res, next) {
         let username = req.body.params.username;
         let password = req.body.params.password;
 

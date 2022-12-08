@@ -1,1 +1,4 @@
-module.exports = { auth: require("./auth")};
+module.exports = { 
+    auth: require("./auth"),
+    doctors: require("./doctors")
+};

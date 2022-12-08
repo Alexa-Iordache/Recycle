@@ -4,13 +4,9 @@
 
     <div class="menu-options-container">
       <div class="menu-option" *ngFor="let item of menuItems">
-        <!-- <button mat-flat-button class="login-page-button"> -->
-          <mat-icon class="menu-icon"> {{ item.icon }} </mat-icon>
-          <button mat-flat-button class="menu-option-text">{{ item.text }}</button>
-        <!-- </button> -->
-        <!-- <mat-icon class="menu-icon"> {{ item.icon }} </mat-icon> -->
-        <!-- <div class="menu-option-text"> {{ item.text }}</div> -->
-        <!-- routerLink="/crisis-list" -->
+        <mat-icon class="menu-icon"> {{ item.icon }} </mat-icon>
+        <button mat-button class="menu-option-text" (click)="navigateTo( item.path )">{{ item.text }}</button>
+        <!-- <div class="menu-option-text" routerLink= {{ item.path }}> {{ item.text }}</div> -->
       </div>
     </div>
   </div>

@@ -11,13 +11,18 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { MedicalSpecialitiesComponent } from './medical-specialities/medical-specialities.component';
+import { DoctorsComponent } from './doctors/doctors.component';
+import { MatTableModule } from '@angular/material/table';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     MainPageComponent,
-    MedicalSpecialitiesComponent
+    MedicalSpecialitiesComponent,
+    DoctorsComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,8 @@ import { MedicalSpecialitiesComponent } from './medical-specialities/medical-spe
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

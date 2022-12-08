@@ -11,13 +11,13 @@
   flex-direction: column;
   align-items: flex-end;
   height: 100%;
-  max-width: 200px;
+  max-width: 240px;
   background-color: #3366ff;
 }
 
 .main-page-menu-title {
   display: flex;
-  margin: 30px 10px 0 15px;
+  margin: 30px 10px 0 30px;
   @extend .text-4;
   color: white;
 }
@@ -30,7 +30,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 20px 10px 0 10px;
+  margin: 20px 10px 0 20px;
 
   .mat-icon {
     color: white;
@@ -38,7 +38,7 @@
 
   .menu-option-text {
     color: white;
-    margin-left: 10px;
+    // margin-left: px;
     @extend .text-2;
   }
 }
