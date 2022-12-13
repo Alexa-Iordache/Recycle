@@ -1,83 +1,55 @@
 <div class="doctors-main-container">
-  <table
-    mat-table
-    [dataSource]="dataSource"
-    class="mat-elevation-z8 demo-table"
-  >
-    <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef>Nume</th>
-      <td mat-cell *matCellDef="let doctor">
-        <button mat-button >
-          {{ doctor.LastName }} {{ doctor.FirstName }}
-        </button>
-      </td>
-    </ng-container>
+  <div class="doctors-inputs-container">
+    <form class="first-form-container">
+      <mat-form-field appearance="fill">
+        <mat-label>
+          <mat-icon class="search-icon">search</mat-icon>
+          Cauta un doctor
+        </mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+    </form>
 
-    <ng-container matColumnDef="specialization">
-      <th mat-header-cell *matHeaderCellDef>Specializare</th>
-      <td mat-cell *matCellDef="let doctor">
-        {{ doctor.MedicalSpecialityID }}
-      </td>
-    </ng-container>
+    <form class="form-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Selecteaza un centru</mat-label>
+        <input
+          type="text"
+          aria-label="Number"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
 
-    <ng-container matColumnDef="doctorType">
-      <th mat-header-cell *matHeaderCellDef>Primar/Specialist</th>
-      <td mat-cell *matCellDef="let doctor">{{ doctor.DoctorType }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="ssn">
-      <th mat-header-cell *matHeaderCellDef>CNP</th>
-      <td mat-cell *matCellDef="let doctor">{{ doctor.SSN }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="birthDate">
-      <th mat-header-cell *matHeaderCellDef>Data nasterii</th>
-      <td mat-cell *matCellDef="let doctor">
-        {{ doctor.BirthDate.substring(0, 10).split("-").reverse().join("-") }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="sex">
-      <th mat-header-cell *matHeaderCellDef>Sex</th>
-      <td mat-cell *matCellDef="let doctor">{{ doctor.Sex }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="phoneNumber">
-      <th mat-header-cell *matHeaderCellDef>Numar telefon</th>
-      <td mat-cell *matCellDef="let doctor">{{ doctor.PhoneNumber }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>Email</th>
-      <td mat-cell *matCellDef="let doctor">{{ doctor.Email }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="adress">
-      <th mat-header-cell *matHeaderCellDef>Adresa</th>
-      <td mat-cell *matCellDef="let doctor">
-        {{ doctor.County }}, {{ doctor.City }}, Str. {{ doctor.Street }} nr.
-        {{ doctor.StreetNumber }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="hiringDate">
-      <th mat-header-cell *matHeaderCellDef>Data angajarii</th>
-      <td mat-cell *matCellDef="let doctor">
-        {{ doctor.HiringDate.substring(0, 10).split("-").reverse().join("-") }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="schedule">
-      <th mat-header-cell *matHeaderCellDef>Interval de lucru</th>
-      <td mat-cell *matCellDef="let doctor">
-        {{ doctor.StartSchedule }} - {{ doctor.EndSchedule }}
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-
-  <!-- <div *ngIf="modalOpen == true" class="doctors-modal-info">ceva</div> -->
-
+    <form class="form-container">
+      <mat-form-field  appearance="fill">
+        <mat-label>Selecteaza o specialitate</mat-label>
+        <input
+          type="text"
+          aria-label="Number"
+          matInput
+          [formControl]="myControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </div>
 </div>

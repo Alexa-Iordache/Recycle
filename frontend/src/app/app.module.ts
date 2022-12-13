@@ -9,11 +9,12 @@ import { LoginPageComponent } from 'src/app/login-page/login-page.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MedicalSpecialitiesComponent } from './medical-specialities/medical-specialities.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { MatTableModule } from '@angular/material/table';
 import { ModalComponent } from './modal/modal.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { ModalComponent } from './modal/modal.component';
     MatButtonModule,
     MatIconModule,
     FormsModule,
-    MatTableModule
+    MatTableModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

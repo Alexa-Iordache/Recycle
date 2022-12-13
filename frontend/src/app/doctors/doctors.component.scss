@@ -1,24 +1,54 @@
 .doctors-main-container {
-  background-color: #3366ff;
-  height: 100%;;
+  background-image: url('../../images/doctors2.png');
+  background-size: cover;
+  background-position: left center;
+  height: 100%;
 }
 
-.demo-table {
+.doctors-inputs-container {
+  display: flex;
+  min-height: 400px;
+  max-width: 600px;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 100px;
+}
+
+.form-container {
+  min-width: 150px;
+  max-width: 300px;
   width: 100%;
 }
 
-.mat-header-cell {
-  text-align: center;
-  color: #3366ff;
+.first-form-container {
+  min-width: 150px;
+  max-width: 300px;
+  width: 100%;
+  margin-top: 100px;
 }
 
-.mat-cell {
-  text-align: center;
+.mat-icon {
+  width: 16px;
+  height: 16px;
+  color: white;
+  margin-top: -6px;
+  margin-left: 4px;
 }
 
-.doctors-modal-info {
-  width: 200px;
-  height: 200px;
-  border-radius: 10px;
-  //box-shadow: 10px 10px 5px lightblue;
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  border-radius: 4px 4px 0 0;
+  padding: 0.75em 0.75em 0 0.75em;
+  background-color: rgb(156, 185, 234);
+}
+
+::ng-deep {
+  .mat-form-field-label {
+    color: white;
+    font-weight: bolder;
+  }
+
+  .mat-form-field-underline {
+    height: 10px;
+  }
 }

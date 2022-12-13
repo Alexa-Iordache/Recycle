@@ -6,7 +6,6 @@
       <div class="menu-option" *ngFor="let item of menuItems">
         <mat-icon class="menu-icon"> {{ item.icon }} </mat-icon>
         <button mat-button class="menu-option-text" (click)="navigateTo( item.path )">{{ item.text }}</button>
-        <!-- <div class="menu-option-text" routerLink= {{ item.path }}> {{ item.text }}</div> -->
       </div>
     </div>
   </div>

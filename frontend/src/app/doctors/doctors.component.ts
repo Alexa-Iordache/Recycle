@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { map, Observable, startWith } from 'rxjs';
 import { RpcService } from '../services/rpc.service';
 // import { MatDialog } from '@angular/material/dialog';
 // import { ModalComponent } from '../modal/modal.component';
@@ -35,6 +37,18 @@ export class DoctorsComponent implements OnInit {
     // public dialog: MatDialog
   ) { }
 
+  myControl = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
+  filteredOptions: Observable<string[]> | undefined;
+
+  // ngOnInit() {
+  //   this.filteredOptions = this.myControl.valueChanges
+  //     .pipe(
+  //       startWith(''),
+  //       map(value => this._filter(value))
+  //     );
+  // }
+
   ngOnInit(): void {
     console.log('s a initializat componenta');
     let query = `SELECT * FROM Doctors;`;
@@ -52,24 +66,17 @@ export class DoctorsComponent implements OnInit {
       console.log(this.doctorInfo);
       this.dataSource = this.doctorInfo;
     });
+
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
   }
 
-  // modalAppears():  void {
-  //   const dialogRef = this.dialog.open(ModalComponent);
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //   });
-  // }
-
-  // modalAppears(): void {
-  //   const dialogRef = this.dialog.open(ModalComponent, {
-  //     data: {name: this.name, animal: this.animal},
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //     this.animal = result;
-  //   });
-  // }
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
 }
