@@ -10,7 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MedicalSpecialitiesComponent } from './medical-specialities/medical-specialities.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -21,7 +20,6 @@ import { MatCardModule } from '@angular/material/card';
     AppComponent,
     LoginPageComponent,
     MainPageComponent,
-    MedicalSpecialitiesComponent,
     DoctorsComponent
   ],
   imports: [
