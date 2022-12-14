@@ -3,7 +3,7 @@
     <form class="first-form-container">
       <mat-form-field appearance="fill">
         <mat-label>
-          <mat-icon class="search-icon">search</mat-icon>
+          <!-- <mat-icon>search</mat-icon> -->
           Cauta un doctor
         </mat-label>
         <textarea matInput></textarea>
@@ -51,5 +51,16 @@
         </mat-autocomplete>
       </mat-form-field>
     </form>
+  </div>
+
+  <div class="doctors-card-container">
+    <mat-card *ngFor="let item of doctorInfo">
+      <div>
+        <mat-card-title> {{item.LastName}} {{item.FirstName}} </mat-card-title>
+        <mat-card-subtitle>Medic {{item.DoctorType}} </mat-card-subtitle>
+        <mat-card-content> {{item.MedicalSpecialityID}} </mat-card-content>
+      </div>
+      <mat-icon mat-card-avatar>person</mat-icon>
+    </mat-card>
   </div>
 </div>

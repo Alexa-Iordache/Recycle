@@ -13,8 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MedicalSpecialitiesComponent } from './medical-specialities/medical-specialities.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { MatTableModule } from '@angular/material/table';
-import { ModalComponent } from './modal/modal.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     LoginPageComponent,
     MainPageComponent,
     MedicalSpecialitiesComponent,
-    DoctorsComponent,
-    ModalComponent
+    DoctorsComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +34,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     FormsModule,
     MatTableModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
