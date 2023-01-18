@@ -1,0 +1,70 @@
+<h1 mat-dialog-title>Introduceti datele noului pacient:</h1>
+<div mat-dialog-content>
+  <div class="input_container">
+    <p>Nume:</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Ionescu</mat-label>
+      <input matInput [(ngModel)]="data.lastName" />
+    </mat-form-field>
+  </div>
+
+  <div class="input_container">
+    <p>Prenume:</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Andrei</mat-label>
+      <input matInput [(ngModel)]="data.firstName" />
+    </mat-form-field>
+  </div>
+
+  <div class="input_container">
+    <p>CNP:</p>
+    <mat-form-field appearance="fill">
+      <mat-label>1750317894532</mat-label>
+      <input matInput [(ngModel)]="data.cnp" />
+    </mat-form-field>
+  </div>
+
+  <div class="input_container">
+    <p>Data nasterii:</p>
+    <mat-form-field appearance="fill">
+      <mat-label>1975-03-17</mat-label>
+      <input matInput [(ngModel)]="data.birthDate" />
+    </mat-form-field>
+  </div>
+
+  <div class="input_container">
+    <p>Sex:</p>
+    <mat-form-field appearance="fill">
+      <mat-label>M</mat-label>
+      <input matInput [(ngModel)]="data.sex" />
+    </mat-form-field>
+  </div>
+
+  <div class="input_container">
+    <p>Numar de telefon:</p>
+    <mat-form-field appearance="fill">
+      <mat-label>0752349876</mat-label>
+      <input matInput [(ngModel)]="data.phoneNumber" />
+    </mat-form-field>
+  </div>
+
+  <div class="input_container">
+    <p>Adresa de email:</p>
+    <mat-form-field appearance="fill">
+      <mat-label>andrei.ionescu@gmail.com</mat-label>
+      <input matInput [(ngModel)]="data.email" />
+    </mat-form-field>
+  </div>
+
+  <div class="input_container">
+    <p>Doreste abonament:</p>
+    <mat-form-field appearance="fill">
+      <mat-label>DA</mat-label>
+      <input matInput [(ngModel)]="data.membership" />
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Anuleaza</button>
+  <button mat-button cdkFocusInitial [mat-dialog-close]="data">Ok</button>
+</div>

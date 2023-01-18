@@ -14,13 +14,23 @@ import { DoctorsComponent } from './doctors/doctors.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { AppointmentsComponent } from './appointments/appointments.component';
+import { PatientsComponent } from './patients/patients.component';
+import { SpecialitiesComponent } from './specialities/specialities.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     MainPageComponent,
-    DoctorsComponent
+    DoctorsComponent,
+    AppointmentsComponent,
+    PatientsComponent,
+    SpecialitiesComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +43,9 @@ import { MatCardModule } from '@angular/material/card';
     MatTableModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
