@@ -43,8 +43,8 @@
   <ng-container matColumnDef="button">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
-      <button mat-raised-button (click)="deleteButton(element.PatientID)">Sterge</button>
-      <!-- <button mat-raised-button (click)="openDialog()">Editeaza</button> -->
+      <button mat-raised-button (click)="deletePatient(element.PatientID)">Sterge</button>
+      <button mat-raised-button (click)="editPatient(element.PatientID)">Editeaza</button>
     </td>
   </ng-container>
 
@@ -55,7 +55,7 @@
   ></tr>
 </table>
 
-<button mat-raised-button (click)="openDialog()">Adauga</button>
+<button mat-raised-button (click)="addPatient()">Adauga</button>
 
 <!-- <h1 mat-dialog-title>Hi</h1>
 <div mat-dialog-content>

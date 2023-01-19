@@ -14,19 +14,20 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  selector: 'app-edit-modal',
+  templateUrl: './edit-modal.component.html',
+  styleUrls: ['./edit-modal.component.scss']
 })
-export class ModalComponent {
+export class EditModalComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<ModalComponent>,
+    public dialogRef: MatDialogRef<EditModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
 
   onNoClick(): void {
-    console.log('Pacientul nu a fost adaugat');
+    console.log('Pacientul nu a fost editat cu succes');
     this.dialogRef.close();
   }
+
 }

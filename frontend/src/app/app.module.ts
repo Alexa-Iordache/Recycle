@@ -20,6 +20,7 @@ import { PatientsComponent } from './patients/patients.component';
 import { SpecialitiesComponent } from './specialities/specialities.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal.component';
+import { EditModalComponent } from './edit-modal/edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ModalComponent } from './modal/modal.component';
     AppointmentsComponent,
     PatientsComponent,
     SpecialitiesComponent,
-    ModalComponent
+    ModalComponent,
+    EditModalComponent
   ],
   imports: [
     BrowserModule,
