@@ -22,6 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { FilesComponent } from './files/files.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { StatisticsComponent } from './statistics/statistics.component';
     PatientsComponent,
     SpecialitiesComponent,
     ModalComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    FilesComponent
   ],
   imports: [
     BrowserModule,

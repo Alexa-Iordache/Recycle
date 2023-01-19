@@ -1,0 +1,33 @@
+<table mat-table [dataSource]="filesInfo" class="mat-elevation-z8 demo-table">
+
+  <!-- <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let element">{{element.DoctorID}}</td>
+  </ng-container> -->
+
+  <ng-container matColumnDef="fileCode">
+    <th mat-header-cell *matHeaderCellDef>Cod fisa</th>
+    <td mat-cell *matCellDef="let element">{{element.MedicalRecord_code}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="patient">
+    <th mat-header-cell *matHeaderCellDef>Pacient</th>
+    <td mat-cell *matCellDef="let element">{{element.LastName}} {{element.FirstName}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="results">
+    <th mat-header-cell *matHeaderCellDef>Rezultate</th>
+    <td mat-cell *matCellDef="let element">{{element.Results}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="treatment">
+    <th mat-header-cell *matHeaderCellDef>Tratament recomandat</th>
+    <td mat-cell *matCellDef="let element">{{element.Treatment}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns;"
+  ></tr>
+</table>

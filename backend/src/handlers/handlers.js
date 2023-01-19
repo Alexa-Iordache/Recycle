@@ -4,5 +4,6 @@ module.exports = {
     locations: require("./locations"),
     specialities: require("./specialities"),
     appointments: require("./appointments"),
-    patients: require("./patients")
+    patients: require("./patients"),
+    files: require("./files")
 };
