@@ -13,7 +13,7 @@ export class MainPageComponent implements OnInit {
     { icon: 'local_hospital', text: 'Medici', path: 'doctors' },
     { icon: 'stars', text: 'Specializari', path: 'specialities' },
     { icon: 'event_note', text: 'Programari', path: 'appointments'},
-    { icon: 'folder_shared', text: 'Dosar medical', path: ''},
+    { icon: 'folder_shared', text: 'Statistici', path: 'statistics'},
     { icon: 'location_on', text: 'Locatii', path: ''},
 
   ]

@@ -12,54 +12,59 @@ let patients = {
     },
 
     addPatient(req, res, next) {
-        let id = req.body.id;
-        let lastName = req.body.lastName;
-        let firstName = req.body.firstName;
-        let cnp = req.body.cnp;
-        let birthDate = req.body.birthDate;
-        let sex = req.body.sex;
-        let phoneNumber = req.body.phoneNumber;
-        let email = req.body.email;
-        let membership = req.body.membership;
+        let lastName = req.body.params.lastName;
+        let firstName = req.body.params.firstName;
+        let cnp = req.body.params.cnp;
+        let birthDate = req.body.params.birthDate;
+        let sex = req.body.params.sex;
+        let phoneNumber = req.body.params.phoneNumber;
+        let email = req.body.params.email;
+        let membership = req.body.params.membership;
+        let medicalHistory = req.body.params.medicalHistory;
 
-        mysql.query(`INSERT INTO Patients (PatientID, LastName, FirstName, SSN, 
+        mysql.query(`INSERT INTO Patients (LastName, FirstName, SSN, 
             BirthDate, Sex, PhoneNumber, Email, Membership, MedicalHistory) 
-            VALUES ('${id}', '${lastName}', '${firstName}', '${cnp}', '${birthDate}','${sex}', 
-            '${phoneNumber}', '${email}', '${membership}', 'NU');`, (error, result) => {
-            // if (result.length == 0) {
-            //     res.json({id: 1, error: 'does not exist patients', result: null});
-            // }
-
-            // res.json({id: 1, error: null, result: result});
+            VALUES ('${lastName}', '${firstName}', '${cnp}', '${birthDate}','${sex}', 
+            '${phoneNumber}', '${email}', '${membership}', '${medicalHistory}');`, (error, result) => {
 
             if(error){   
                 throw err;
-            }
-            else{
-                let data = result;
-                console.log(data);
-                res.json({error : null, result : result});
-
             }
         }); 
     },
 
     deletePatient(req, res, next){
-        let id = req.body.id;
+        let id = req.body.params.id;
+        console.log('a intrat in be');
         console.log(id);
         mysql.query(`DELETE FROM Patients P WHERE ((P.PatientID = '${id}'));` ,(err, result) =>{
-            if(err){   
+            if (err) {
                 throw err;
             }
-            else{
-                let data = result;
-              
-                console.log(data);
-                res.json({err : null, result : result});
-
-            }
         });
-    }
+    },
+
+    editPatient(req, res, next) {
+        let id = req.body.params.id;
+        let lastName = req.body.params.lastName;
+        let firstName = req.body.params.firstName;
+        let cnp = req.body.params.cnp;
+        let phoneNumber = req.body.params.phoneNumber;
+        let email = req.body.params.email;
+        let membership = req.body.params.membership;
+        let medicalHistory = req.body.params.medicalHistory;
+
+        mysql.query(`UPDATE Patients
+            SET LastName = '${lastName}', FirstName = '${firstName}', SSN = '${cnp}', PhoneNumber = '${phoneNumber}',
+            Email = '${email}', Membership = '${membership}', MedicalHistory = '${medicalHistory}'
+            WHERE PatientID = '${id}'`
+            , (error, result) => {
+
+            if(error){   
+                throw err;
+            }
+        }); 
+    },
 }
 
 module.exports = patients;

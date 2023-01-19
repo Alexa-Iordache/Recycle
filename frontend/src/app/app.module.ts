@@ -20,7 +20,8 @@ import { PatientsComponent } from './patients/patients.component';
 import { SpecialitiesComponent } from './specialities/specialities.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal.component';
-import { EditModalComponent } from './edit-modal/edit-modal.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
     PatientsComponent,
     SpecialitiesComponent,
     ModalComponent,
-    EditModalComponent
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,8 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
     ReactiveFormsModule,
     MatCardModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
