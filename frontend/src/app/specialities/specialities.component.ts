@@ -29,6 +29,6 @@ export class SpecialitiesComponent implements OnInit {
       console.log(this.specialitiesInfo);
     });
   }
-  displayedColumns = ['position', 'name', 'doctor', 'description'];
+  displayedColumns = ['position', 'name', 'description'];
 
 }
