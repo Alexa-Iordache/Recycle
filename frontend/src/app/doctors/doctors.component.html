@@ -7,32 +7,95 @@
 
   <ng-container matColumnDef="lastName">
     <th mat-header-cell *matHeaderCellDef>Nume</th>
-    <td mat-cell *matCellDef="let element">{{element.LastName}}</td>
+    <td mat-cell *matCellDef="let element" >
+      <div  *ngIf="editMode === false || element.DoctorID !== idToEdit">
+        {{element.LastName}}
+      </div>
+      <mat-form-field appearance="fill" *ngIf="editMode === true && element.DoctorID === idToEdit">
+        <mat-label> {{element.LastName}}</mat-label>
+        <input matInput  [(ngModel)]="element.LastName"/>
+      </mat-form-field>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="firstName">
     <th mat-header-cell *matHeaderCellDef>Prenume</th>
-    <td mat-cell *matCellDef="let element">{{element.FirstName}}</td>
+    <td mat-cell *matCellDef="let element" >
+      <div  *ngIf="editMode === false || element.DoctorID !== idToEdit">
+        {{element.FirstName}}
+      </div>
+      <mat-form-field appearance="fill" *ngIf="editMode === true && element.DoctorID === idToEdit">
+        <mat-label> {{element.FirstName}}</mat-label>
+        <input matInput  [(ngModel)]="element.FirstName"/>
+      </mat-form-field>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="calification">
     <th mat-header-cell *matHeaderCellDef>Calificare</th>
-    <td mat-cell *matCellDef="let element">Medic {{element.DoctorType}}</td>
+    <td mat-cell *matCellDef="let element" >
+      <div  *ngIf="editMode === false || element.DoctorID !== idToEdit">
+        {{element.DoctorType}}
+      </div>
+      <mat-form-field appearance="fill" *ngIf="editMode === true && element.DoctorID === idToEdit">
+        <mat-label> {{element.DoctorType}}</mat-label>
+        <input matInput  [(ngModel)]="element.DoctorType"/>
+      </mat-form-field>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="specialization">
     <th mat-header-cell *matHeaderCellDef>Specializare</th>
-    <td mat-cell *matCellDef="let element">{{element.Name}}</td>
+    <td mat-cell *matCellDef="let element" >
+      <div  *ngIf="editMode === false || element.DoctorID !== idToEdit">
+        {{element.Name}}
+      </div>
+      <mat-form-field appearance="fill" *ngIf="editMode === true && element.DoctorID === idToEdit">
+        <mat-label> {{element.Name}}</mat-label>
+        <input matInput  [(ngModel)]="element.Name"/>
+      </mat-form-field>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="phoneNumber">
     <th mat-header-cell *matHeaderCellDef>Numar de telefon</th>
-    <td mat-cell *matCellDef="let element">{{element.PhoneNumber}}</td>
+    <td mat-cell *matCellDef="let element" >
+      <div  *ngIf="editMode === false || element.DoctorID !== idToEdit">
+        {{element.PhoneNumber}}
+      </div>
+      <mat-form-field appearance="fill" *ngIf="editMode === true && element.DoctorID === idToEdit">
+        <mat-label> {{element.PhoneNumber}}</mat-label>
+        <input matInput  [(ngModel)]="element.PhoneNumber"/>
+      </mat-form-field>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="email">
     <th mat-header-cell *matHeaderCellDef>Email</th>
-    <td mat-cell *matCellDef="let element">{{element.Email}}</td>
+    <td mat-cell *matCellDef="let element" >
+      <div  *ngIf="editMode === false || element.DoctorID !== idToEdit">
+        {{element.Email}}
+      </div>
+      <mat-form-field appearance="fill" *ngIf="editMode === true && element.DoctorID === idToEdit">
+        <mat-label> {{element.Email}}</mat-label>
+        <input matInput  [(ngModel)]="element.Email"/>
+      </mat-form-field>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="button">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-raised-button (click)="deleteDoctor(element.DoctorID)">Sterge</button>
+      <button mat-raised-button
+        *ngIf="editMode === false || element.DoctorID !== idToEdit"
+        (click)="editDoctor(element.DoctorID)"
+        >Editeaza</button>
+      <button mat-raised-button
+      *ngIf="editMode === true && element.DoctorID=== idToEdit"
+      (click)="saveNewDoctor(element)"
+      >Salveaza</button>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -41,3 +104,5 @@
       *matRowDef="let row; columns: displayedColumns;"
   ></tr>
 </table>
+
+<button mat-raised-button (click)="addDoctor()">Adauga</button>
