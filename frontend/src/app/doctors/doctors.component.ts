@@ -157,22 +157,12 @@ export class DoctorsComponent implements OnInit {
 
     let paramsEditDoctor = {
       id: element.DoctorID,
-      medicalSpeciality: this.medicalSpeciality,
-      lastName: this.lastName,
-      firstName: this.firstName,
-      // cnp: this.cnp,
-      // birthDate: this.birthDate,
-      // sex: this.sex,
-      phoneNumber: this.phoneNumber,
-      email: this.email,
-      // county: this.county,
-      // city: this.city,
-      // street: this.street,
-      // streetNumber: this.streetNumber,
-      doctorType: this.doctorType,
-      // hiringDate: this.hiringDate,
-      // startSchedule: this.startSchedule,
-      // endSchedule: this.endSchedule
+      medicalSpecialityID: element.MedicalSpecialityID,
+      lastName: element.LastName,
+      firstName: element.FirstName,
+      phoneNumber: element.PhoneNumber,
+      email: element.Email,
+      doctorType: element.DoctorType,
     };
 
     this.rpcService.callRPC(

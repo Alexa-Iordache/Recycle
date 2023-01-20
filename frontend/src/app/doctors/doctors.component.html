@@ -86,7 +86,7 @@
           <button mat-raised-button (click)="deleteDoctor(element.DoctorID)" class="delete_button">Sterge</button>
           <button mat-raised-button *ngIf="editMode === false || element.DoctorID !== idToEdit"
             (click)="editDoctor(element.DoctorID)" class="edit_button">Editeaza</button>
-          <button mat-raised-button *ngIf="editMode === true && element.DoctorID=== idToEdit"
+          <button mat-raised-button *ngIf="editMode === true && element.DoctorID === idToEdit"
             (click)="saveNewDoctor(element)" class="edit_button">Salveaza</button>
         </td>
       </ng-container>
