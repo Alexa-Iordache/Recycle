@@ -11,11 +11,14 @@ import { MatDialog } from '@angular/material/dialog';
 export class DoctorsComponent implements OnInit {
 
   doctorInfo: any;
+  specialitiesInfo: any;
   editMode = false;
   idToEdit: any;
+  specialityID: any;
+  idConvert = 0;
   displayedColumns = ['lastName', 'firstName', 'calification', 'specialization', 'phoneNumber', 'email', 'button'];
 
-  medicalSpeciality = '';
+  medicalSpeciality: any;
   lastName = '';
   firstName = '';
   cnp = '';
@@ -131,6 +134,8 @@ export class DoctorsComponent implements OnInit {
         endSchedule: result.endSchedule
       };
 
+      console.log(paramsAddDoctor);
+
       this.rpcService.callRPC(
         'doctors.addDoctor',
         paramsAddDoctor,
@@ -154,10 +159,30 @@ export class DoctorsComponent implements OnInit {
   saveNewDoctor(element: any): void {
     console.log('s-a apasat butonul de save');
     console.log(element);
+    console.log(element.Name);
+
+    let paramsGetSpeciatilyName = {
+      name: element.Name,
+    };
+
+    this.rpcService.callRPC(
+      'specialities.getSpecialityName',
+      paramsGetSpeciatilyName,
+      (error: any, res: any) => {
+        console.log('intra in getSpecialityName');
+        if (error) {
+          console.log(error);
+          return;
+        }
+        this.specialityID = res.result;
+        console.log(this.specialityID[0].MedicalSpecialityID);
+        this.idConvert = this.specialityID[0].MedicalSpecialityID;
+      }
+    );
 
     let paramsEditDoctor = {
       id: element.DoctorID,
-      medicalSpecialityID: element.MedicalSpecialityID,
+      medicalSpecialityID: this.idConvert,
       lastName: element.LastName,
       firstName: element.FirstName,
       phoneNumber: element.PhoneNumber,
@@ -170,15 +195,14 @@ export class DoctorsComponent implements OnInit {
       paramsEditDoctor,
       (error: any, res: any) => {
         console.log('intra in edit');
+        console.log(paramsEditDoctor.medicalSpecialityID);
         if (error) {
           console.log(error);
           return;
         }
-
         this.getDoctors();
       }
     );
-
     this.editMode = false;
   }
 }

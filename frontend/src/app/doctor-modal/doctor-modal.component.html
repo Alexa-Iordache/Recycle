@@ -3,21 +3,21 @@
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label>Specializare medicala</mat-label>
+      <mat-label class="required">Specializare medicala</mat-label>
       <input matInput [(ngModel)]="data.medicalSpeciality" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label>Nume</mat-label>
+      <mat-label class="required">Nume</mat-label>
       <input matInput [(ngModel)]="data.lastName" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label>Prenume</mat-label>
+      <mat-label class="required">Prenume</mat-label>
       <input matInput [(ngModel)]="data.firstName" />
     </mat-form-field>
   </div>
@@ -45,14 +45,14 @@
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label>Numar de telefon</mat-label>
+      <mat-label class="required">Numar de telefon</mat-label>
       <input matInput [(ngModel)]="data.phoneNumber" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label>Adresa de email</mat-label>
+      <mat-label class="required">Adresa de email</mat-label>
       <input matInput [(ngModel)]="data.email" />
     </mat-form-field>
   </div>
@@ -87,7 +87,7 @@
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label>Calificarea(primar/specialist)</mat-label>
+      <mat-label class="required">Calificarea(primar/specialist)</mat-label>
       <input matInput [(ngModel)]="data.DoctorType" />
     </mat-form-field>
   </div>
@@ -102,7 +102,7 @@
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label>Ora incepere program</mat-label>
+      <mat-label class="required">Ora incepere program</mat-label>
       <input matInput [(ngModel)]="data.startSchedule" />
     </mat-form-field>
   </div>

@@ -49,17 +49,18 @@ let doctors = {
     let startSchedule = req.body.params.startSchedule;
     let endSchedule = req.body.params.endSchedule;
 
+    console.log(medicalSpeciality);
+
     mysql.query(
-      `INSERT INTO Doctors (MedicalSpecialityID, LastName, FirstName, SSN, 
-            BirthDate, Sex, PhoneNumber, Email, County, City, Street, StreetNumber, 
-            DoctorType, HiringDate, StartSchedule, EndSchedule) values 
-            ('${medicalSpeciality}', '${lastName}', '${firstName}', '${cnp}', '${birthDate}', 
-            '${sex}', '${phoneNumber}', '${email}', '${county}', '${city}', '${street}', 
-            '${streetNumber}', '${doctorType}', '${hiringDate}', '${startSchedule}', '${endSchedule}');
-        `,
+      `INSERT INTO Doctors (MedicalSpecialityID, LastName, FirstName, SSN, Sex, 
+        PhoneNumber, Email, County, City, Street, DoctorType, 
+        StartSchedule, EndSchedule) 
+      VALUES ('${medicalSpeciality}', '${lastName}', '${firstName}', '${cnp}',
+       '${sex}', '${phoneNumber}', '${email}', '${county}', '${city}', '${street}', '${doctorType}', '${startSchedule}', 
+       '${endSchedule}');`,
       (error, result) => {
         if (error) {
-          throw err;
+          throw error;
         }
       }
     );
@@ -71,9 +72,9 @@ let doctors = {
     console.log(id);
     mysql.query(
       `DELETE FROM Doctors D WHERE ((D.DoctorID = '${id}'));`,
-      (err, result) => {
-        if (err) {
-          throw err;
+      (error, result) => {
+        if (error) {
+          throw error;
         }
       }
     );
@@ -96,7 +97,7 @@ let doctors = {
             WHERE DoctorID = '${id}'`,
       (error, result) => {
         if (error) {
-          throw err;
+          throw error;
         }
       }
     );

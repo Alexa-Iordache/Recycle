@@ -1,4 +1,6 @@
 import { Component, Inject } from '@angular/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 export interface DialogData {
@@ -20,7 +22,6 @@ export interface DialogData {
   endSchedule: string
 }
 
-
 @Component({
   selector: 'app-doctor-modal',
   templateUrl: './doctor-modal.component.html',
@@ -31,7 +32,7 @@ export class DoctorModalComponent {
   constructor(
     public dialogRef: MatDialogRef<DoctorModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-  ) {}
+  ) { }
 
   onNoClick(): void {
     console.log('Doctorul nu a fost adaugat');
