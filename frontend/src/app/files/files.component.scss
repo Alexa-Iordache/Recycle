@@ -15,3 +15,29 @@
 .demo-row-is-clicked {
   font-weight: bold;
 }
+
+.main_container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #3366ff;
+}
+
+.table_container {
+  margin-top: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 50px;
+}
+
+th.mat-header-cell {
+  text-align: center;
+  color: #3366ff;
+  font-size: larger;
+}
+
+.mat-cell,
+.mat-footer-cell {
+  color: rgba(0, 0, 0, .87);
+  text-align: center;
+}

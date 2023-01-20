@@ -24,6 +24,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { FilesComponent } from './files/files.component';
 import { DoctorModalComponent } from './doctor-modal/doctor-modal.component';
+import { LocationsComponent } from './locations/locations.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { DoctorModalComponent } from './doctor-modal/doctor-modal.component';
     ModalComponent,
     StatisticsComponent,
     FilesComponent,
-    DoctorModalComponent
+    DoctorModalComponent,
+    LocationsComponent
   ],
   imports: [
     BrowserModule,

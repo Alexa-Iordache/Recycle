@@ -13,7 +13,7 @@ export class DoctorsComponent implements OnInit {
   doctorInfo: any;
   editMode = false;
   idToEdit: any;
-  displayedColumns = ['position', 'lastName', 'firstName', 'calification', 'specialization', 'phoneNumber', 'email', 'button'];
+  displayedColumns = ['lastName', 'firstName', 'calification', 'specialization', 'phoneNumber', 'email', 'button'];
 
   medicalSpeciality = '';
   lastName = '';
@@ -156,23 +156,23 @@ export class DoctorsComponent implements OnInit {
     console.log(element);
 
     let paramsEditDoctor = {
-        id: element.DoctorID,
-        medicalSpeciality: this.medicalSpeciality,
-        lastName: this.lastName,
-        firstName: this.firstName,
-        // cnp: this.cnp,
-        // birthDate: this.birthDate,
-        // sex: this.sex,
-        phoneNumber: this.phoneNumber,
-        email: this.email,
-        // county: this.county,
-        // city: this.city,
-        // street: this.street,
-        // streetNumber: this.streetNumber,
-        doctorType: this.doctorType,
-        // hiringDate: this.hiringDate,
-        // startSchedule: this.startSchedule,
-        // endSchedule: this.endSchedule
+      id: element.DoctorID,
+      medicalSpeciality: this.medicalSpeciality,
+      lastName: this.lastName,
+      firstName: this.firstName,
+      // cnp: this.cnp,
+      // birthDate: this.birthDate,
+      // sex: this.sex,
+      phoneNumber: this.phoneNumber,
+      email: this.email,
+      // county: this.county,
+      // city: this.city,
+      // street: this.street,
+      // streetNumber: this.streetNumber,
+      doctorType: this.doctorType,
+      // hiringDate: this.hiringDate,
+      // startSchedule: this.startSchedule,
+      // endSchedule: this.endSchedule
     };
 
     this.rpcService.callRPC(
@@ -184,6 +184,7 @@ export class DoctorsComponent implements OnInit {
           console.log(error);
           return;
         }
+
         this.getDoctors();
       }
     );

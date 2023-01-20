@@ -32,5 +32,5 @@ export class AppointmentsComponent implements OnInit {
       console.log(this.appointmentsInfo);
     });
   }
-  displayedColumns = ['position', 'patient', 'doctor', 'location', 'date', 'hour'];
+  displayedColumns = ['patient', 'doctor', 'location', 'date', 'hour'];
 }

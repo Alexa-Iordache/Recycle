@@ -14,7 +14,7 @@ export class MainPageComponent implements OnInit {
     { icon: 'stars', text: 'Specializari', path: 'specialities' },
     { icon: 'event_note', text: 'Programari', path: 'appointments'},
     { icon: 'folder_shared', text: 'Dosare medicale', path: 'files'},
-    { icon: 'location_on', text: 'Locatii', path: ''},
+    { icon: 'location_on', text: 'Locatii', path: 'locations'},
     { icon:  'format_list_bulleted', text: 'Statistici', path: 'statistics'},
 
   ]

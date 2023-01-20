@@ -1,6 +1,7 @@
 .mat-dialog-content {
   display: flex;
   flex-direction: column;
+  min-width: 400px;
 }
 
 .input_container {
@@ -8,4 +9,27 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+}
+
+.title {
+    color: #3366ff;
+    font-size: larger;
+    font-weight: 800;
+    margin-left: 50px;
+}
+
+p {
+  color: #3366ff;
+  font-size: larger;
+  font-weight: 800;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.ok_button {
+  background-color: #3366ff;
 }

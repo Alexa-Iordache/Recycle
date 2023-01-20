@@ -23,14 +23,13 @@ export class PatientsComponent implements OnInit {
   editMode = false;
   idToEdit: any;
 
-  constructor(private rpcService: RpcService, public dialog: MatDialog) {}
+  constructor(private rpcService: RpcService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getPatients();
   }
 
   displayedColumns = [
-    'position',
     'lastName',
     'firstName',
     'cnp',

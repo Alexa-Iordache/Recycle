@@ -1,139 +1,123 @@
-<h1 mat-dialog-title>Introduceti datele noului doctor:</h1>
+<h1 mat-dialog-title class="title">Introduceti datele noului doctor:</h1>
 <div mat-dialog-content>
 
   <div class="input_container">
-    <p>Specializare medicala:</p>
     <mat-form-field appearance="fill">
-      <mat-label>Cardiologie</mat-label>
+      <mat-label>Specializare medicala</mat-label>
       <input matInput [(ngModel)]="data.medicalSpeciality" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
-    <p>Nume:</p>
     <mat-form-field appearance="fill">
-      <mat-label>Ionescu</mat-label>
+      <mat-label>Nume</mat-label>
       <input matInput [(ngModel)]="data.lastName" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
-    <p>Prenume:</p>
     <mat-form-field appearance="fill">
-      <mat-label>Andrei</mat-label>
+      <mat-label>Prenume</mat-label>
       <input matInput [(ngModel)]="data.firstName" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
-    <p>CNP:</p>
     <mat-form-field appearance="fill">
-      <mat-label>1750317894532</mat-label>
+      <mat-label>CNP</mat-label>
       <input matInput [(ngModel)]="data.cnp" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
-    <p>Data nasterii:</p>
     <mat-form-field appearance="fill">
-      <mat-label>1975-03-17</mat-label>
+      <mat-label>Data nasterii</mat-label>
       <input matInput [(ngModel)]="data.birthDate" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
-    <p>Sex:</p>
     <mat-form-field appearance="fill">
-      <mat-label>M</mat-label>
+      <mat-label>Sex</mat-label>
       <input matInput [(ngModel)]="data.sex" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
-    <p>Numar de telefon:</p>
     <mat-form-field appearance="fill">
-      <mat-label>0752349876</mat-label>
+      <mat-label>Numar de telefon</mat-label>
       <input matInput [(ngModel)]="data.phoneNumber" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
-    <p>Adresa de email:</p>
     <mat-form-field appearance="fill">
-      <mat-label>andrei.ionescu@gmail.com</mat-label>
+      <mat-label>Adresa de email</mat-label>
       <input matInput [(ngModel)]="data.email" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
-    <p>Judet:</p>
     <mat-form-field appearance="fill">
-      <mat-label>Arges</mat-label>
+      <mat-label>Judet</mat-label>
       <input matInput [(ngModel)]="data.county" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
-    <p>Oras:</p>
     <mat-form-field appearance="fill">
-      <mat-label>Pitesti</mat-label>
+      <mat-label>Oras</mat-label>
       <input matInput [(ngModel)]="data.city" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
-    <p>Strada:</p>
     <mat-form-field appearance="fill">
-      <mat-label>Trandafirilor</mat-label>
+      <mat-label>Strada</mat-label>
       <input matInput [(ngModel)]="data.street" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
-    <p>Numar strada:</p>
     <mat-form-field appearance="fill">
-      <mat-label>23</mat-label>
+      <mat-label>Numar</mat-label>
       <input matInput [(ngModel)]="data.streetNumber" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
-    <p>Tipul de doctor:</p>
     <mat-form-field appearance="fill">
-      <mat-label>primar</mat-label>
+      <mat-label>Calificarea(primar/specialist)</mat-label>
       <input matInput [(ngModel)]="data.DoctorType" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
-    <p>Data angajarii:</p>
     <mat-form-field appearance="fill">
-      <mat-label>2023-01-20</mat-label>
+      <mat-label>Data angajarii</mat-label>
       <input matInput [(ngModel)]="data.hiringDate" />
     </mat-form-field>
   </div>
 
 
   <div class="input_container">
-    <p>Ora incepere program:</p>
     <mat-form-field appearance="fill">
-      <mat-label>08:00</mat-label>
+      <mat-label>Ora incepere program</mat-label>
       <input matInput [(ngModel)]="data.startSchedule" />
     </mat-form-field>
   </div>
 
 
   <div class="input_container">
-    <p>Ora incheiere program:</p>
     <mat-form-field appearance="fill">
-      <mat-label>18:00</mat-label>
+      <mat-label>Ora incheiere program</mat-label>
       <input matInput [(ngModel)]="data.endSchedule" />
     </mat-form-field>
   </div>
 
 
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="buttons">
   <button mat-button (click)="onNoClick()">Anuleaza</button>
-  <button mat-button cdkFocusInitial [mat-dialog-close]="data">Ok</button>
+  <button mat-button cdkFocusInitial [mat-dialog-close]="data" class="ok_button">Ok</button>
 </div>

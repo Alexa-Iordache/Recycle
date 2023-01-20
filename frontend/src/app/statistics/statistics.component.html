@@ -1,189 +1,229 @@
-<div class="firstStatistic">
-  <h4>Doctorii care lucreaza la specializarea:</h4>
-  <mat-form-field appearance="fill">
-    <mat-label>Specializare</mat-label>
-    <mat-select>
-      <mat-option
-        *ngFor="let item of specialityList"
-        [value]="item.Name"
-        (click)="displayDoctors(item.Name)"
+<div class="main_container">
+  <div class="firstStatistic">
+    <h4 class="title">Doctorii care lucreaza la specializarea:</h4>
+    <mat-form-field appearance="fill" class="dropdown_list">
+      <mat-label>Specializare</mat-label>
+      <mat-select>
+        <mat-option
+          *ngFor="let item of specialityList"
+          [value]="item.Name"
+          (click)="displayDoctors(item.Name)"
+        >
+          {{ item.Name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="table_container">
+      <table
+        *ngIf="isSpecialitySelected === true"
+        mat-table
+        [dataSource]="doctorsList"
+        class="mat-elevation-z8 demo-table"
       >
-        {{ item.Name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef>Nume</th>
+          <td mat-cell *matCellDef="let element">{{ element.LastName }}</td>
+        </ng-container>
 
-  <table
-    *ngIf="isSpecialitySelected === true"
-    mat-table
-    [dataSource]="doctorsList"
-    class="mat-elevation-z8 demo-table"
-  >
-    <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef>Nume</th>
-      <td mat-cell *matCellDef="let element">{{ element.LastName }}</td>
-    </ng-container>
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef>Prenume</th>
+          <td mat-cell *matCellDef="let element">{{ element.FirstName }}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="firstName">
-      <th mat-header-cell *matHeaderCellDef>Prenume</th>
-      <td mat-cell *matCellDef="let element">{{ element.FirstName }}</td>
-    </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-</div>
-
-<div class="secondStatistic">
-  <div>Numarul de programari din fiecare locatie a clinicii medicale:</div>
-  <table
-    mat-table
-    [dataSource]="appointmentsList"
-    class="mat-elevation-z8 demo-table"
-  >
-    <ng-container matColumnDef="streetName">
-      <th mat-header-cell *matHeaderCellDef>Strada</th>
-      <td mat-cell *matCellDef="let element">{{ element.Street }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="streetNumber">
-      <th mat-header-cell *matHeaderCellDef>Nr.</th>
-      <td mat-cell *matCellDef="let element">{{ element.StreetNumber }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="appointmetsNumber">
-      <th mat-header-cell *matHeaderCellDef>Numarul de programari</th>
-      <td mat-cell *matCellDef="let element">{{ element.appointmetsNumber }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
-  </table>
-</div>
-
-<div class="thirdStatistic">
-  <div>Cei mai recent angajati doctori de la fiecare specializare medicala, ordonati dupa data angajarii:</div>
-  <table
-    mat-table
-    [dataSource]="mostRecentDoctors"
-    class="mat-elevation-z8 demo-table"
-  >
-    <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef>Nume</th>
-      <td mat-cell *matCellDef="let element">{{ element.LastName }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="firstName">
-      <th mat-header-cell *matHeaderCellDef>Prenume</th>
-      <td mat-cell *matCellDef="let element">{{ element.FirstName }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="speciality">
-      <th mat-header-cell *matHeaderCellDef>Specializare medicala</th>
-      <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="hiringDate">
-      <th mat-header-cell *matHeaderCellDef>Data angajarii</th>
-      <td mat-cell *matCellDef="let element">{{ element.HiringDate.slice(0,10) }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
-  </table>
-</div>
-
-
-<div class="fourthStatistic">
-  <div>Primele 3 cele mai scumpe programari si doctorii care le-au sustinut:</div>
-  <table
-    mat-table
-    [dataSource]="mostExpensiveAppointments"
-    class="mat-elevation-z8 demo-table"
-  >
-    <ng-container matColumnDef="code">
-      <th mat-header-cell *matHeaderCellDef>Codul programarii</th>
-      <td mat-cell *matCellDef="let element">{{ element.Appointment_code }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef>Pret</th>
-      <td mat-cell *matCellDef="let element">{{ element.Price }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Numele doctorului</th>
-      <td mat-cell *matCellDef="let element">{{ element.LastName }} {{element.FirstName}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="speciality">
-      <th mat-header-cell *matHeaderCellDef>Specializarea medicala</th>
-      <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns4"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns4"></tr>
-  </table>
-</div>
-
-
-<div class="fifthStatistic">
-  <div>Anul in care s-au nascut cei mai multi pacienti care vin la clinica:</div>
-  <table
-    mat-table
-    [dataSource]="mostPatients"
-    class="mat-elevation-z8 demo-table"
-  >
-    <ng-container matColumnDef="year">
-      <th mat-header-cell *matHeaderCellDef>Anul nasterii pacientilor</th>
-      <td mat-cell *matCellDef="let element">{{ element.year }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="number">
-      <th mat-header-cell *matHeaderCellDef>Numarul pacientilor</th>
-      <td mat-cell *matCellDef="let element">{{ element.number }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns5"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns5"></tr>
-  </table>
-</div>
-
-<div class="sixthStatistic">
-  <div>Codul programarilor cu pretul mai mare decat toate programarile din locatia:</div>
-    <mat-form-field appearance="fill">
-    <mat-label>Locatie</mat-label>
-    <mat-select>
-      <mat-option
-        *ngFor="let item of locationsList"
-        [value]="item.Street"
-        (click)="displayLocations(item)"
+  <div class="secondStatistic">
+    <div class="title2">
+      Numarul de programari din fiecare locatie a clinicii medicale:
+    </div>
+    <div class="table_container2">
+      <table
+        mat-table
+        [dataSource]="appointmentsList"
+        class="mat-elevation-z8 demo-table"
       >
-        {{ item.Street }} {{ item.StreetNumber }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <table
-    mat-table
-    [dataSource]="appointmentsCompared"
-    class="mat-elevation-z8 demo-table"
-  >
-    <ng-container matColumnDef="code">
-      <th mat-header-cell *matHeaderCellDef>Codul programarilor</th>
-      <td mat-cell *matCellDef="let element">{{ element.Appointment_code }}</td>
-    </ng-container>
+        <ng-container matColumnDef="streetName">
+          <th mat-header-cell *matHeaderCellDef>Strada</th>
+          <td mat-cell *matCellDef="let element">{{ element.Street }}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef>Pretul programarilot</th>
-      <td mat-cell *matCellDef="let element">{{ element.Price }}</td>
-    </ng-container>
+        <ng-container matColumnDef="streetNumber">
+          <th mat-header-cell *matHeaderCellDef>Nr.</th>
+          <td mat-cell *matCellDef="let element">{{ element.StreetNumber }}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="location">
-      <th mat-header-cell *matHeaderCellDef>Locatia</th>
-      <td mat-cell *matCellDef="let element">{{ element.Street }},  {{ element.StreetNumber }}</td>
-    </ng-container>
+        <ng-container matColumnDef="appointmetsNumber">
+          <th mat-header-cell *matHeaderCellDef>Numarul de programari</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.appointmetsNumber }}
+          </td>
+        </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns6"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns6"></tr>
-  </table>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="thirdStatistic">
+    <div class="title2">
+      Cei mai recent angajati doctori de la fiecare specializare medicala,
+      ordonati dupa data angajarii:
+    </div>
+    <div class="table_container3">
+      <table
+        mat-table
+        [dataSource]="mostRecentDoctors"
+        class="mat-elevation-z8 demo-table"
+      >
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef>Nume</th>
+          <td mat-cell *matCellDef="let element">{{ element.LastName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef>Prenume</th>
+          <td mat-cell *matCellDef="let element">{{ element.FirstName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="speciality">
+          <th mat-header-cell *matHeaderCellDef>Specializare medicala</th>
+          <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="hiringDate">
+          <th mat-header-cell *matHeaderCellDef>Data angajarii</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.HiringDate.slice(0, 10) }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="fourthStatistic">
+    <div class="title2">
+      Primele 3 cele mai scumpe programari si doctorii care le-au sustinut:
+    </div>
+
+    <div class="table_container3">
+      <table
+        mat-table
+        [dataSource]="mostExpensiveAppointments"
+        class="mat-elevation-z8 demo-table"
+      >
+        <ng-container matColumnDef="code">
+          <th mat-header-cell *matHeaderCellDef>Codul programarii</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.Appointment_code }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>Pret</th>
+          <td mat-cell *matCellDef="let element">{{ element.Price }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Numele doctorului</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.LastName }} {{ element.FirstName }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="speciality">
+          <th mat-header-cell *matHeaderCellDef>Specializarea medicala</th>
+          <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns4"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns4"></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="fifthStatistic">
+    <div class="title2">
+      Anul in care s-au nascut cei mai multi pacienti care vin la clinica:
+    </div>
+
+    <div class="table_container">
+      <table
+        mat-table
+        [dataSource]="mostPatients"
+        class="mat-elevation-z8 demo-table"
+      >
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef>Anul nasterii pacientilor</th>
+          <td mat-cell *matCellDef="let element">{{ element.year }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="number">
+          <th mat-header-cell *matHeaderCellDef>Numarul pacientilor</th>
+          <td mat-cell *matCellDef="let element">{{ element.number }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns5"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns5"></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="sixthStatistic">
+    <div class="title2">
+      Codul programarilor cu pretul mai mare decat toate programarile din
+      locatia:
+    </div>
+    <mat-form-field appearance="fill" class="dropdown_list">
+      <mat-label>Locatie</mat-label>
+      <mat-select>
+        <mat-option
+          *ngFor="let item of locationsList"
+          [value]="item.Street"
+          (click)="displayLocations(item)"
+        >
+          {{ item.Street }} {{ item.StreetNumber }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="table_container6">
+      <table
+        mat-table
+        [dataSource]="appointmentsCompared"
+        class="mat-elevation-z8 demo-table"
+        *ngIf="isLocationSelected === true"
+      >
+        <ng-container matColumnDef="code">
+          <th mat-header-cell *matHeaderCellDef>Codul programarilor</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.Appointment_code }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>Pretul programarilot</th>
+          <td mat-cell *matCellDef="let element">{{ element.Price }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="location">
+          <th mat-header-cell *matHeaderCellDef>Locatia</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.Street }}, {{ element.StreetNumber }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns6"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns6"></tr>
+      </table>
+    </div>
+  </div>
 </div>

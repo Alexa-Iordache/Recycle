@@ -52,7 +52,7 @@ let statistics = {
 
     getMostExpensiveAppointments(req, res, next) {
 
-        mysql.query(`SELECT A.appointment_code, A.Price, D.LastName, D.FirstName, S.Name 
+        mysql.query(`SELECT A.Appointment_code, A.Price, D.LastName, D.FirstName, S.Name 
         FROM Appointments A, Doctors D, Medical_Specialities S  
         WHERE D.DoctorID = A.DoctorID AND S.MedicalSpecialityID = D.MedicalSpecialityID AND  
          3 > (SELECT COUNT(*) 
@@ -89,7 +89,7 @@ let statistics = {
     createAppointmentsList(req, res, next) {
         let id = req.body.params.id;
 
-        mysql.query(`SELECT A.appointment_code, A.Price, L.Street, L.StreetNumber 
+        mysql.query(`SELECT A.Appointment_code, A.Price, L.Street, L.StreetNumber 
         FROM Appointments A, Locations L 
         WHERE L.LocationID = A.LocationID AND A.Price > (
             SELECT MAX(A.Price) 
