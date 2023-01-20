@@ -20,7 +20,9 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: #3366ff;
+  background-image: url('../../images/medical_specialities.png');
+  background-size: cover;
+  background-position: left center;
 }
 
 .table_container {
