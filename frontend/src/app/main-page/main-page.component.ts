@@ -9,13 +9,9 @@ import { Router } from '@angular/router';
 export class MainPageComponent implements OnInit {
 
   menuItems: any = [
-    { icon: 'people', text: 'Lista pacienti', path: 'patients' },
-    { icon: 'local_hospital', text: 'Medici', path: 'doctors' },
-    { icon: 'stars', text: 'Specializari', path: 'specialities' },
-    { icon: 'event_note', text: 'Programari', path: 'appointments'},
-    { icon: 'folder_shared', text: 'Dosare medicale', path: 'files'},
-    { icon: 'location_on', text: 'Locatii', path: 'locations'},
-    { icon:  'format_list_bulleted', text: 'Statistici', path: 'statistics'},
+    { icon: 'people', text: 'Abonamentele mele', path: 'patients' },
+    { icon: 'local_hospital', text: 'Cerere colectare', path: 'doctors' },
+    { icon: 'stars', text: 'Lista tomberoane', path: 'patients' },
 
   ]
 

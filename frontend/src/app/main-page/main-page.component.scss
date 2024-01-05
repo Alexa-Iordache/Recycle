@@ -12,7 +12,7 @@
   align-items: flex-end;
   height: 100%;
   max-width: 240px;
-  background-color: #3366ff;
+  background-color: #587e5a;
 }
 
 .main-page-menu-title {
@@ -44,20 +44,21 @@
 
 .welcome-message-container {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
-  background-image: url('../../images/telemedicineapp.jpeg');
+  background-image: url('../../images/main-page.png');
   background-size: cover;
-  background-position: left center;
-  margin-left: 100px;
+  background-position: right center;
+  // margin-left: 100px;
 
   .welcome-message {
-    width: 250px;
-    margin-bottom: 100px;
+    width: 500px;
+    // margin-top: 10px;
+    margin-bottom: 500px;
     @extend .text-3;
-    color: #3366ff;
+    color: #587e5a;
     font-size: 35px;
     line-height: 110%;
     text-align: center;

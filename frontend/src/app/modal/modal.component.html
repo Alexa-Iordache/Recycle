@@ -1,58 +1,30 @@
-<h1 mat-dialog-title class="title">Introduceti datele noului pacient:</h1>
+<h1 mat-dialog-title class="title">Introduceti datele noului tomberon:</h1>
 <div mat-dialog-content>
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label class="required">Nume</mat-label>
-      <input matInput [(ngModel)]="data.lastName" />
+      <mat-label class="required">Locatie</mat-label>
+      <input matInput [(ngModel)]="data.location" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label class="required">Prenume</mat-label>
-      <input matInput [(ngModel)]="data.firstName" />
+      <mat-label class="required">Capacitate</mat-label>
+      <input matInput [(ngModel)]="data.capacity" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label class="required">CNP</mat-label>
-      <input matInput [(ngModel)]="data.cnp" />
+      <mat-label class="required">Frecventa colectare</mat-label>
+      <input matInput [(ngModel)]="data.frequency" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label>Data nasterii</mat-label>
-      <input matInput [(ngModel)]="data.birthDate" />
-    </mat-form-field>
-  </div>
-
-  <div class="input_container">
-    <mat-form-field appearance="fill">
-      <mat-label>Sex</mat-label>
-      <input matInput [(ngModel)]="data.sex" />
-    </mat-form-field>
-  </div>
-
-  <div class="input_container">
-    <mat-form-field appearance="fill">
-      <mat-label class="required">Numar de telefon</mat-label>
-      <input matInput [(ngModel)]="data.phoneNumber" />
-    </mat-form-field>
-  </div>
-
-  <div class="input_container">
-    <mat-form-field appearance="fill">
-      <mat-label class="required">Adresa de email</mat-label>
-      <input matInput [(ngModel)]="data.email" />
-    </mat-form-field>
-  </div>
-
-  <div class="input_container">
-    <mat-form-field appearance="fill">
-      <mat-label class="required">Doreste abonament?</mat-label>
-      <input matInput [(ngModel)]="data.membership" />
+      <mat-label class="required">Tip tomberon</mat-label>
+      <input matInput [(ngModel)]="data.type" />
     </mat-form-field>
   </div>
 </div>

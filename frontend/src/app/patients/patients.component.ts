@@ -9,16 +9,11 @@ import { RpcService } from '../services/rpc.service';
   styleUrls: ['./patients.component.scss'],
 })
 export class PatientsComponent implements OnInit {
-  patientsInfo: any;
-  lastName = '';
-  firstName = '';
-  cnp = '';
-  birthDate = '';
-  sex = '';
-  phoneNumber = '';
-  email = '';
-  membership = '';
-  medicalHistory = '';
+  wasteBinInfo: any;
+  location = '';
+  capacity = '';
+  frequency = '';
+  type = '';
 
   editMode = false;
   idToEdit: any;
@@ -26,152 +21,137 @@ export class PatientsComponent implements OnInit {
   constructor(private rpcService: RpcService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getPatients();
+    this.getWasteBin();
   }
 
   displayedColumns = [
-    'lastName',
-    'firstName',
-    'cnp',
-    'phoneNumber',
-    'email',
-    'membership',
-    'medicalHistory',
-    'button',
+    'location',
+    'capacity',
+    'frequency',
+    'type'
   ];
 
-  getPatients(): void {
+  getWasteBin(): void {
     let params = {
-      username: 'admin',
+      "username": 'admin'
     };
 
-    console.log('merge getPatients');
+    console.log('merge getWasteBin');
 
     this.rpcService.callRPC(
-      'patients.getPatients',
+      'wasteBin.getWasteBin',
       params,
       (err: any, res: any) => {
         if (err || res.error) {
-          console.log('nu s au putut afisa pacientii');
+          console.log('nu s au putut afisa tomberoanele');
           return;
         }
-        this.patientsInfo = res.result;
-        console.log(this.patientsInfo);
+        this.wasteBinInfo = res.result;
+        console.log(this.wasteBinInfo);
       }
     );
   }
 
-  deletePatient(id: any): void {
-    if (!id) {
-      console.log('id was not introduced');
-      return;
-    }
+  // deletePatient(id: any): void {
+  //   if (!id) {
+  //     console.log('id was not introduced');
+  //     return;
+  //   }
 
-    let paramsDelete = {
-      id: id,
-    };
+  //   let paramsDelete = {
+  //     id: id,
+  //   };
 
-    console.log(paramsDelete);
+  //   console.log(paramsDelete);
 
-    this.rpcService.callRPC(
-      'patients.deletePatient',
-      paramsDelete,
-      (error: any, res: any) => {
-        console.log('intra aici');
-        if (error) {
-          console.log(error);
-          return;
-        }
-        this.getPatients();
-      }
-    );
-  }
+  //   this.rpcService.callRPC(
+  //     'patients.deletePatient',
+  //     paramsDelete,
+  //     (error: any, res: any) => {
+  //       console.log('intra aici');
+  //       if (error) {
+  //         console.log(error);
+  //         return;
+  //       }
+  //       this.getPatients();
+  //     }
+  //   );
+  // }
 
-  addPatient(): void {
+  addWasteBin(): void {
     const dialogRef = this.dialog.open(ModalComponent, {
       data: {
-        lastName: this.lastName,
-        firstName: this.firstName,
-        cnp: this.cnp,
-        birthDate: this.birthDate,
-        sex: this.sex,
-        phoneNumber: this.phoneNumber,
-        email: this.email,
-        membership: this.membership,
-        medicalHistory: 'NU',
+        location: this.location,
+        capacity: this.capacity,
+        frequency: this.frequency,
+        type: this.type
       },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (!result) {
-        console.log('pacient was not introduced');
+        console.log('waste bin was not introduced');
         return;
       }
 
-      let paramsAddPacient = {
-        lastName: result.lastName,
-        firstName: result.firstName,
-        cnp: result.cnp,
-        birthDate: result.birthDate,
-        sex: result.sex,
-        phoneNumber: result.phoneNumber,
-        email: result.email,
-        membership: result.membership,
-        medicalHistory: 'NU',
+      let paramsAddWasteBin = {
+        location: result.location,
+        capacity: result.capacity,
+        frequency: result.frequency,
+        type: result.type
       };
 
       this.rpcService.callRPC(
-        'patients.addPatient',
-        paramsAddPacient,
+        'wasteBin.addWasteBin',
+        paramsAddWasteBin,
         (error: any, res: any) => {
-          console.log('intra aici');
           if (error) {
             console.log(error);
             return;
           }
-          this.getPatients();
+          this.getWasteBin();
         }
       );
     });
   }
 
-  editPatient(id: any): void {
-    //console.log('s a apasat butonul de edit');
-    this.editMode = true;
-    //console.log(this.editMode);
-    this.idToEdit = id;
-    //console.log(this.idToEdit);
-  }
+  // editPatient(id: any): void {
+  //   //console.log('s a apasat butonul de edit');
+  //   this.editMode = true;
+  //   //console.log(this.editMode);
+  //   this.idToEdit = id;
+  //   //console.log(this.idToEdit);
+  // }
 
-  saveNewPatient(element: any): void {
-    console.log('s a apasat butonul de save');
-    console.log(element);
+  // saveNewPatient(element: any): void {
+  //   console.log('s a apasat butonul de save');
+  //   console.log(element);
 
-    let paramsEditPacient = {
-      id: element.PatientID,
-      lastName: element.LastName,
-      firstName: element.FirstName,
-      cnp: element.SSN,
-      phoneNumber: element.PhoneNumber,
-      email: element.Email,
-      membership: element.Membership,
-      medicalHistory: element.MedicalHistory,
-    };
+  //   let paramsEditPacient = {
+  //     id: element.PatientID,
+  //     lastName: element.LastName,
+  //     firstName: element.FirstName,
+  //     cnp: element.SSN,
+  //     phoneNumber: element.PhoneNumber,
+  //     email: element.Email,
+  //     membership: element.Membership,
+  //     medicalHistory: element.MedicalHistory,
+  //   };
 
-    this.rpcService.callRPC(
-      'patients.editPatient',
-      paramsEditPacient,
-      (error: any, res: any) => {
-        console.log('intra in edit');
-        if (error) {
-          console.log(error);
-          return;
-        }
+  //   this.rpcService.callRPC(
+  //     'patients.editPatient',
+  //     paramsEditPacient,
+  //     (error: any, res: any) => {
+  //       console.log('intra in edit');
+  //       if (error) {
+  //         console.log(error);
+  //         return;
+  //       }
 
-        this.getPatients();
-      }
-    );
+  //       this.getPatients();
+  //     }
+  //   );
 
-    this.editMode = false;
-  }
+  //   this.editMode = false;
+  // }
 }

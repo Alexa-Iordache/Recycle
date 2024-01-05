@@ -2,15 +2,10 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 export interface DialogData {
-  lastName: string;
-  firstName: string;
-  cnp: string;
-  birthDate: string;
-  sex: string;
-  phoneNumber: string;
-  email: string;
-  membership: string;
-  medicalHistory: string;
+  location: string;
+  capacity: string;
+  frequency: string;
+  type: string;
 }
 
 @Component({
@@ -26,7 +21,7 @@ export class ModalComponent {
   ) {}
 
   onNoClick(): void {
-    console.log('Pacientul nu a fost adaugat');
+    console.log('Tomberonul nu a fost adaugat');
     this.dialogRef.close();
   }
 }

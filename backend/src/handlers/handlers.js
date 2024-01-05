@@ -4,7 +4,7 @@ module.exports = {
     locations: require("./locations"),
     specialities: require("./specialities"),
     appointments: require("./appointments"),
-    patients: require("./patients"),
+    wasteBin: require("./wasteBin"),
     statistics: require("./statistics"),
     files: require("./files")
 };

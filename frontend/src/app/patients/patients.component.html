@@ -1,114 +1,52 @@
 <div class="main_container">
   <div class="table_container">
-    <table mat-table [dataSource]="patientsInfo" class="mat-elevation-z8 demo-table">
+    <div class="scrollable_table">
+      <table
+        mat-table
+        [dataSource]="wasteBinInfo"
+        class="mat-elevation-z8 demo-table"
+      >
+        <ng-container matColumnDef="location">
+          <th mat-header-cell *matHeaderCellDef>Locatie</th>
+          <td mat-cell *matCellDef="let element">
+            <div>
+              {{ element.Locatie }}
+            </div>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="lastName">
-        <th mat-header-cell *matHeaderCellDef>Nume</th>
-        <td mat-cell *matCellDef="let element">
-          <div *ngIf="editMode === false || element.PatientID !== idToEdit">
-            {{element.LastName}}
-          </div>
-          <mat-form-field appearance="fill" *ngIf="editMode === true && element.PatientID === idToEdit">
-            <mat-label> {{element.LastName}}</mat-label>
-            <input matInput [(ngModel)]="element.LastName" />
-          </mat-form-field>
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="capacity">
+          <th mat-header-cell *matHeaderCellDef>Capacitate</th>
+          <td mat-cell *matCellDef="let element">
+            <div *ngIf="editMode === false || element.PatientID !== idToEdit">
+              {{ element.Capacitate }}
+            </div>
+          </td>
+        </ng-container>
 
+        <ng-container matColumnDef="frequency">
+          <th mat-header-cell *matHeaderCellDef>Frecventa colectare</th>
+          <td mat-cell *matCellDef="let element">
+            <div>
+              {{ element.Frecventa_colectare }}
+            </div>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="firstName">
-        <th mat-header-cell *matHeaderCellDef>Prenume</th>
-        <td mat-cell *matCellDef="let element">
-          <div *ngIf="editMode === false || element.PatientID !== idToEdit">
-            {{element.FirstName}}
-          </div>
-          <mat-form-field appearance="fill" *ngIf="editMode === true && element.PatientID === idToEdit">
-            <mat-label> {{element.FirstName}}</mat-label>
-            <input matInput [(ngModel)]="element.FirstName">
-          </mat-form-field>
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef>Tip tomberon</th>
+          <td mat-cell *matCellDef="let element">
+            <div>
+              {{ element.Tip_tomberon }}
+            </div>
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="cnp">
-        <th mat-header-cell *matHeaderCellDef>CNP</th>
-        <td mat-cell *matCellDef="let element">
-          <div *ngIf="editMode === false || element.PatientID !== idToEdit">
-            {{element.SSN}}
-          </div>
-          <mat-form-field appearance="fill" *ngIf="editMode === true && element.PatientID === idToEdit">
-            <mat-label> {{element.SSN}}</mat-label>
-            <input matInput [(ngModel)]="element.SSN">
-          </mat-form-field>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="phoneNumber">
-        <th mat-header-cell *matHeaderCellDef>Numar de telefon</th>
-        <td mat-cell *matCellDef="let element">
-          <div *ngIf="editMode === false || element.PatientID !== idToEdit">
-            {{element.PhoneNumber}}
-          </div>
-          <mat-form-field appearance="fill" *ngIf="editMode === true && element.PatientID === idToEdit">
-            <mat-label> {{element.PhoneNumber}}</mat-label>
-            <input matInput [(ngModel)]="element.PhoneNumber">
-          </mat-form-field>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef>Email</th>
-        <td mat-cell *matCellDef="let element">
-          <div *ngIf="editMode === false || element.PatientID !== idToEdit">
-            {{element.Email}}
-          </div>
-          <mat-form-field appearance="fill" *ngIf="editMode === true && element.PatientID === idToEdit">
-            <mat-label> {{element.Email}}</mat-label>
-            <input matInput [(ngModel)]="element.Email">
-          </mat-form-field>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="membership">
-        <th mat-header-cell *matHeaderCellDef>Abonament</th>
-        <td mat-cell *matCellDef="let element">
-          <div *ngIf="editMode === false || element.PatientID !== idToEdit">
-            {{element.Membership}}
-          </div>
-          <mat-form-field appearance="fill" *ngIf="editMode === true && element.PatientID === idToEdit">
-            <mat-label> {{element.Membership}}</mat-label>
-            <input matInput [(ngModel)]="element.Membership" />
-          </mat-form-field>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="medicalHistory">
-        <th mat-header-cell *matHeaderCellDef>Istoric medical</th>
-        <td mat-cell *matCellDef="let element">
-          <div *ngIf="editMode === false || element.PatientID !== idToEdit">
-            {{element.MedicalHistory}}
-          </div>
-          <mat-form-field appearance="fill" *ngIf="editMode === true && element.PatientID === idToEdit">
-            <mat-label> {{element.MedicalHistory}}</mat-label>
-            <input matInput [(ngModel)]="element.MedicalHistory" />
-          </mat-form-field>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="button">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-raised-button (click)="deletePatient(element.PatientID)" class="delete_button">Sterge</button>
-          <button mat-raised-button *ngIf="editMode === false || element.PatientID !== idToEdit"
-            (click)="editPatient(element.PatientID)" class="edit_button">Editeaza</button>
-          <button mat-raised-button *ngIf="editMode === true && element.PatientID === idToEdit"
-            (click)="saveNewPatient(element)" class="edit_button">Salveaza</button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
   </div>
 
-  <button mat-raised-button (click)="addPatient()" class="add_button">Adauga</button>
+  <button mat-raised-button (click)="addWasteBin()" class="add_button">Adauga</button>
 </div>
