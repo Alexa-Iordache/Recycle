@@ -19,7 +19,7 @@ Pași realizare proiect
 13. Am creat o noua tabela in baza de date intitulata **Users**. Aceasta are ca si coloane: id (primary key), username (string), password (string), type (admin/ client)
 14. Am creat pagina de **login**
 15. Am creat pagina de **meniu principal** -> de unde te poti duce in pagina de abonamente/ tomberoane/ cereri colecare
-16. Am creat pagina de tomberoane, unde e un tabel cu toate tomberoanele, se poate adauga unul nou sau se poate sterge.
+16. Am creat pagina de tomberoane, unde e un tabel cu toate tomberoanele, se poate adauga unul nou sau se poate sterge si se poate edita un rand.
     !!! **important** toate acestea sunt facute pentru admin
     
 **OBS**: Am stars cheia straina din tblCereriColectare si am redefinit-o folosind on cascade 
