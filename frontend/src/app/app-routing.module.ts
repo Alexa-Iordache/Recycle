@@ -6,7 +6,7 @@ import { FilesComponent } from './files/files.component';
 import { LocationsComponent } from './locations/locations.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
-import { PatientsComponent } from './patients/patients.component';
+import { PatientsComponent } from './patients/wastebin.component';
 import { SpecialitiesComponent } from './specialities/specialities.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 

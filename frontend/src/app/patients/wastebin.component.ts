@@ -4,9 +4,9 @@ import { ModalComponent } from '../modal/modal.component';
 import { RpcService } from '../services/rpc.service';
 
 @Component({
-  selector: 'app-patients',
-  templateUrl: './patients.component.html',
-  styleUrls: ['./patients.component.scss'],
+  selector: 'app-wastebin',
+  templateUrl: './wastebin.component.html',
+  styleUrls: ['./wastebin.component.scss'],
 })
 export class PatientsComponent implements OnInit {
   wasteBinInfo: any;
@@ -28,7 +28,8 @@ export class PatientsComponent implements OnInit {
     'location',
     'capacity',
     'frequency',
-    'type'
+    'type',
+    'button'
   ];
 
   getWasteBin(): void {
@@ -52,31 +53,31 @@ export class PatientsComponent implements OnInit {
     );
   }
 
-  // deletePatient(id: any): void {
-  //   if (!id) {
-  //     console.log('id was not introduced');
-  //     return;
-  //   }
+  deleteWasteBin(id: any): void {
+    if (!id) {
+      console.log('id was not introduced');
+      return;
+    }
 
-  //   let paramsDelete = {
-  //     id: id,
-  //   };
+    let paramsDelete = {
+      id: id,
+    };
 
-  //   console.log(paramsDelete);
+    console.log(paramsDelete);
 
-  //   this.rpcService.callRPC(
-  //     'patients.deletePatient',
-  //     paramsDelete,
-  //     (error: any, res: any) => {
-  //       console.log('intra aici');
-  //       if (error) {
-  //         console.log(error);
-  //         return;
-  //       }
-  //       this.getPatients();
-  //     }
-  //   );
-  // }
+    this.rpcService.callRPC(
+      'wasteBin.deleteWasteBin',
+      paramsDelete,
+      (error: any, res: any) => {
+        console.log('intra aici');
+        if (error) {
+          console.log(error);
+          return;
+        }
+        this.getWasteBin();
+      }
+    );
+  }
 
   addWasteBin(): void {
     const dialogRef = this.dialog.open(ModalComponent, {

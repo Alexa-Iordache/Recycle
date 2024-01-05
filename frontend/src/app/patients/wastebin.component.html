@@ -42,6 +42,17 @@
           </td>
         </ng-container>
 
+        <ng-container matColumnDef="button">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button (click)="deleteWasteBin(element.ID)" class="delete_button">Sterge</button>
+            <!-- <button mat-raised-button *ngIf="editMode === false || element.PatientID !== idToEdit"
+              (click)="editPatient(element.PatientID)" class="edit_button">Editeaza</button>
+            <button mat-raised-button *ngIf="editMode === true && element.PatientID === idToEdit"
+              (click)="saveNewPatient(element)" class="edit_button">Salveaza</button> -->
+          </td>
+        </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>

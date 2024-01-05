@@ -28,19 +28,18 @@ let wasteBin = {
     );
   },
 
-  // deletePatient(req, res, next) {
-  //   let id = req.body.params.id;
-  //   console.log("a intrat in be");
-  //   console.log(id);
-  //   mysql.query(
-  //     `DELETE FROM Patients P WHERE ((P.PatientID = '${id}'));`,
-  //     (err, result) => {
-  //       if (err) {
-  //         throw err;
-  //       }
-  //     }
-  //   );
-  // },
+  deleteWasteBin(req, res, next) {
+    let id = req.body.params.id;
+    console.log(id);
+    mysql.query(
+      `DELETE FROM tblTomberoane WHERE ID = '${id}';`,
+      (err, result) => {
+        if (err) {
+          throw err;
+        }
+      }
+    );
+  },
 
   // editPatient(req, res, next) {
   //   let id = req.body.params.id;
