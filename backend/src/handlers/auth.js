@@ -13,17 +13,18 @@ let auth = {
     let password = req.body.params.password;
 
     mysql.query(
-      `SELECT * FROM Users WHERE Username = '${username}' LIMIT 1`,
+      `SELECT * FROM Users WHERE username = '${username}' LIMIT 1`,
       (error, result) => {
         // verifica daca a fost gasit vreun user cu username ul dat
         if (result.length == 0) {
           // trimite raspuns in frontend sub forma de json
           res.json({ id: 1, error: "no such user", result: null });
+          return;
         }
 
         result = result[0];
-        console.log({ pass: result.Password, password });
-        const samePassword = comparePasswords(result.Password, password);
+        console.log({ pass: result.password, password });
+        const samePassword = comparePasswords(result.password, password);
         if (!samePassword) {
           res.json({ id: 1, error: "password is incorrect", result: null });
           return;

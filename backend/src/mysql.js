@@ -11,7 +11,7 @@ function connect (callback) {
         host: 'localhost',
         user: 'root',
         password: 'password',
-        database: 'clinica'
+        database: 'SuperIndustriaDeReciclareDB'
     });
 
     // getConnection = gets a connection from the pool
