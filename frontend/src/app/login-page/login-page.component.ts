@@ -10,7 +10,11 @@ import { RpcService } from '../services/rpc.service';
 })
 export class LoginPageComponent implements OnInit {
 
+  // variable for successful authentication or not
   public authFailed = false;
+
+  // variable for missing one of the inputs (username or password)
+  public missingInput = false;
 
   @Input() currentPage: any
   @Output() loginButtonPressed = new EventEmitter<string>();
@@ -32,13 +36,17 @@ export class LoginPageComponent implements OnInit {
     // if there is no username or password
     if (!username || !password) {
       console.log('username or password was not introduced');
+      this.missingInput = true;
       return;
+    }
+    else {
+      this.missingInput = false;
     }
 
     let parameters = {
       username: username,
       password: password,
-      query: `SELECT * FROM Users WHERE Username = '${username}' LIMIT 1;`
+      query: `SELECT * FROM Users WHERE username = '${username}' LIMIT 1;`
     }
 
     let copyInstance = this; // a copy of this class (atributes + methods)
