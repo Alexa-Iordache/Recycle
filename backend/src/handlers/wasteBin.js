@@ -41,28 +41,24 @@ let wasteBin = {
     );
   },
 
-  // editPatient(req, res, next) {
-  //   let id = req.body.params.id;
-  //   let lastName = req.body.params.lastName;
-  //   let firstName = req.body.params.firstName;
-  //   let cnp = req.body.params.cnp;
-  //   let phoneNumber = req.body.params.phoneNumber;
-  //   let email = req.body.params.email;
-  //   let membership = req.body.params.membership;
-  //   let medicalHistory = req.body.params.medicalHistory;
+  editWasteBin(req, res, next) {
+    let id = req.body.params.id;
+    let location = req.body.params.location;
+    let capacity = req.body.params.capacity;
+    let frequency = req.body.params.frequency;
+    let type = req.body.params.type;
 
-  //   mysql.query(
-  //     `UPDATE Patients
-  //           SET LastName = '${lastName}', FirstName = '${firstName}', SSN = '${cnp}', PhoneNumber = '${phoneNumber}',
-  //           Email = '${email}', Membership = '${membership}', MedicalHistory = '${medicalHistory}'
-  //           WHERE PatientID = '${id}'`,
-  //     (error, result) => {
-  //       if (error) {
-  //         throw err;
-  //       }
-  //     }
-  //   );
-  // },
+    mysql.query(
+      `UPDATE tblTomberoane
+            SET Locatie = '${location}', Capacitate = '${capacity}', Frecventa_colectare = '${frequency}', 
+            Tip_tomberon = '${type}'`,
+      (error, result) => {
+        if (error) {
+          throw err;
+        }
+      }
+    );
+  },
 };
 
 module.exports = wasteBin;

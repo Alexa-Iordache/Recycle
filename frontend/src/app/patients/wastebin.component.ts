@@ -18,23 +18,17 @@ export class PatientsComponent implements OnInit {
   editMode = false;
   idToEdit: any;
 
-  constructor(private rpcService: RpcService, public dialog: MatDialog) { }
+  constructor(private rpcService: RpcService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getWasteBin();
   }
 
-  displayedColumns = [
-    'location',
-    'capacity',
-    'frequency',
-    'type',
-    'button'
-  ];
+  displayedColumns = ['location', 'capacity', 'frequency', 'type', 'button'];
 
   getWasteBin(): void {
     let params = {
-      "username": 'admin'
+      username: 'admin',
     };
 
     console.log('merge getWasteBin');
@@ -85,7 +79,7 @@ export class PatientsComponent implements OnInit {
         location: this.location,
         capacity: this.capacity,
         frequency: this.frequency,
-        type: this.type
+        type: this.type,
       },
     });
 
@@ -99,7 +93,7 @@ export class PatientsComponent implements OnInit {
         location: result.location,
         capacity: result.capacity,
         frequency: result.frequency,
-        type: result.type
+        type: result.type,
       };
 
       this.rpcService.callRPC(
@@ -116,43 +110,40 @@ export class PatientsComponent implements OnInit {
     });
   }
 
-  // editPatient(id: any): void {
-  //   //console.log('s a apasat butonul de edit');
-  //   this.editMode = true;
-  //   //console.log(this.editMode);
-  //   this.idToEdit = id;
-  //   //console.log(this.idToEdit);
-  // }
+  editWasteBin(id: any): void {
+    //console.log('s a apasat butonul de edit');
+    this.editMode = true;
+    //console.log(this.editMode);
+    this.idToEdit = id;
+    //console.log(this.idToEdit);
+  }
 
-  // saveNewPatient(element: any): void {
-  //   console.log('s a apasat butonul de save');
-  //   console.log(element);
+  saveNewWasteBin(element: any): void {
+    console.log('s a apasat butonul de save');
+    console.log(element);
 
-  //   let paramsEditPacient = {
-  //     id: element.PatientID,
-  //     lastName: element.LastName,
-  //     firstName: element.FirstName,
-  //     cnp: element.SSN,
-  //     phoneNumber: element.PhoneNumber,
-  //     email: element.Email,
-  //     membership: element.Membership,
-  //     medicalHistory: element.MedicalHistory,
-  //   };
+    let paramsEditWasteBin = {
+      id: element.ID,
+      location: element.Locatie,
+      capacity: element.Capacitate,
+      frequency: element.Frecventa_colectare,
+      type: element.Tip_tomberon,
+    };
 
-  //   this.rpcService.callRPC(
-  //     'patients.editPatient',
-  //     paramsEditPacient,
-  //     (error: any, res: any) => {
-  //       console.log('intra in edit');
-  //       if (error) {
-  //         console.log(error);
-  //         return;
-  //       }
+    this.rpcService.callRPC(
+      'wasteBin.editWasteBin',
+      paramsEditWasteBin,
+      (error: any, res: any) => {
+        console.log('intra in edit');
+        if (error) {
+          console.log(error);
+          return;
+        }
 
-  //       this.getPatients();
-  //     }
-  //   );
+        this.getWasteBin();
+      }
+    );
 
-  //   this.editMode = false;
-  // }
+    this.editMode = false;
+  }
 }

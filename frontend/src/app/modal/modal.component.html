@@ -2,29 +2,38 @@
 <div mat-dialog-content>
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label class="required">Locatie</mat-label>
+      <mat-label>Locatie</mat-label>
       <input matInput [(ngModel)]="data.location" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label class="required">Capacitate</mat-label>
+      <mat-label>Capacitate</mat-label>
       <input matInput [(ngModel)]="data.capacity" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label class="required">Frecventa colectare</mat-label>
-      <input matInput [(ngModel)]="data.frequency" />
+      <mat-label>Frecventa colectare</mat-label>
+      <select matNativeControl required [(ngModel)]="data.frequency">
+        <option value="zilnic">Zilnic</option>
+        <option value="saptamanal">Saptamanal</option>
+        <option value="lunar">Lunar</option>
+      </select>
     </mat-form-field>
   </div>
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label class="required">Tip tomberon</mat-label>
-      <input matInput [(ngModel)]="data.type" />
+      <mat-label>Tip tomberon</mat-label>
+      <select matNativeControl required [(ngModel)]="data.type">
+        <option value="plastic">PLASTIC</option>
+        <option value="carton">CARTON</option>
+        <option value="menajer">MENAJER</option>
+        <option value="sticla">STICLA</option>
+      </select>
     </mat-form-field>
   </div>
 </div>
