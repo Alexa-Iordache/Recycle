@@ -10,11 +10,8 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ClientsComponent implements OnInit {
   clientInfo: any;
-  // specialitiesInfo: any;
   editMode = false;
   idToEdit: any;
-  // specialityID: any;
-  // idConvert = 0;
   displayedColumns = [
     'id',
     'name',
@@ -24,22 +21,15 @@ export class ClientsComponent implements OnInit {
     'button',
   ];
 
-  // medicalSpeciality: any;
-  // lastName = '';
-  // firstName = '';
-  // cnp = '';
-  // birthDate = '';
-  // sex = '';
-  // phoneNumber = '';
-  // email = '';
-  // county = '';
-  // city = '';
-  // street = '';
-  // streetNumber = '';
-  // doctorType = '';
-  // hiringDate = '';
-  // startSchedule = '';
-  // endSchedule = '';
+  name = '';
+  phone = '';
+  address = '';
+  email = '';
+  subscription_type = '';
+  subscription_amount = 0;
+  subscription_time = '';
+  subscription_startDate = '';
+  subscription_endDate = '';
 
   constructor(private rpcService: RpcService, public dialog: MatDialog) {}
 
@@ -90,69 +80,93 @@ export class ClientsComponent implements OnInit {
     );
   }
 
-  // addDoctor(): void {
-  //   const dialogRef = this.dialog.open(DoctorModalComponent, {
-  //     data: {
-  //       medicalSpeciality: this.medicalSpeciality,
-  //       lastName: this.lastName,
-  //       firstName: this.firstName,
-  //       cnp: this.cnp,
-  //       birthDate: this.birthDate,
-  //       sex: this.sex,
-  //       phoneNumber: this.phoneNumber,
-  //       email: this.email,
-  //       county: this.county,
-  //       city: this.city,
-  //       street: this.street,
-  //       streetNumber: this.streetNumber,
-  //       DoctorType: this.doctorType,
-  //       hiringDate: this.hiringDate,
-  //       startSchedule: this.startSchedule,
-  //       endSchedule: this.endSchedule,
-  //     },
-  //   });
+  addClient(): void {
+    const dialogRef = this.dialog.open(DoctorModalComponent, {
+      data: {
+        name: this.name,
+        phone: this.phone,
+        address: this.address,
+        email: this.email,
+        subscription_type: this.subscription_type,
+        subscription_amount: this.subscription_amount,
+        subscription_time: this.subscription_time,
+        subscription_startDate: this.subscription_startDate,
+        subscription_endDate: this.subscription_endDate,
+      },
+    });
 
-  //   dialogRef.afterClosed().subscribe((result: any) => {
-  //     if (!result) {
-  //       console.log('doctor was not introduced');
-  //       return;
-  //     }
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (!result) {
+        console.log('client was not introduced');
+        return;
+      }
+      console.log('intra aici');
 
-  //     let paramsAddDoctor = {
-  //       medicalSpeciality: result.medicalSpeciality,
-  //       lastName: result.lastName,
-  //       firstName: result.firstName,
-  //       cnp: result.cnp,
-  //       birthDate: result.birthDate,
-  //       sex: result.sex,
-  //       phoneNumber: result.phoneNumber,
-  //       email: result.email,
-  //       county: result.county,
-  //       city: result.city,
-  //       street: result.street,
-  //       streetNumber: result.streetNumber,
-  //       DoctorType: result.doctorType,
-  //       hiringDate: result.hiringDate,
-  //       startSchedule: result.startSchedule,
-  //       endSchedule: result.endSchedule,
-  //     };
+      let paramsAddClient = {
+        name: result.name,
+        phone: result.phone,
+        address: result.address,
+        email: result.email,
+        subscription_type: result.subscription_type,
+        subscription_amount: result.subscription_amount,
+        subscription_time: result.subscription_time,
+        subscription_startDate: result.subscription_startDate,
+        subscription_endDate: result.subscription_endDate,
+      };
 
-  //     console.log(paramsAddDoctor);
+      let inputDateString = paramsAddClient.subscription_startDate;
+      let inputDate = new Date(inputDateString);
+      let year = inputDate.getUTCFullYear();
+      let month = ('0' + (inputDate.getUTCMonth() + 1)).slice(-2);
+      let day = ('0' + inputDate.getUTCDate()).slice(-2);
+      let formattedDate = `${year}-${month}-${day}`;
+      paramsAddClient.subscription_startDate = formattedDate;
 
-  //     this.rpcService.callRPC(
-  //       'doctors.addDoctor',
-  //       paramsAddDoctor,
-  //       (error: any, res: any) => {
-  //         console.log('intra aici');
-  //         if (error) {
-  //           console.log(error);
-  //           return;
-  //         }
-  //         this.getDoctors();
-  //       }
-  //     );
-  //   });
-  // }
+      let inputDateString2 = paramsAddClient.subscription_endDate;
+      let inputDate2 = new Date(inputDateString2);
+      let year2 = inputDate2.getUTCFullYear();
+      let month2 = ('0' + (inputDate.getUTCMonth() + 1)).slice(-2);
+      let day2 = ('0' + inputDate.getUTCDate()).slice(-2);
+      let formattedDate2 = `${year2}-${month2}-${day2}`;
+      paramsAddClient.subscription_endDate = formattedDate2;
+
+      console.log(paramsAddClient);
+
+      this.rpcService.callRPC(
+        'clients.addClient1',
+        paramsAddClient,
+        (error: any, res: any) => {
+          if (error) {
+            console.log(error);
+            return;
+          }
+        }
+      );
+
+      this.rpcService.callRPC(
+        'clients.addClient2',
+        paramsAddClient,
+        (error: any, res: any) => {
+          if (error) {
+            console.log(error);
+            return;
+          }
+        }
+      );
+
+      this.rpcService.callRPC(
+        'clients.addClient3',
+        paramsAddClient,
+        (error: any, res: any) => {
+          if (error) {
+            console.log(error);
+            return;
+          }
+        }
+      );
+    });
+    this.getClients();
+  }
 
   editClient(id: any): void {
     this.editMode = true;

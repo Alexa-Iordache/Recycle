@@ -4,22 +4,15 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 export interface DialogData {
-  medicalSpeciality: any,
-  lastName: string,
-  firstName: string,
-  cnp: string,
-  birthDate: string,
-  sex: string,
-  phoneNumber: string,
+  name: string,
+  phone: string,
+  address: string,
   email: string,
-  county: string,
-  city: string,
-  street: string,
-  streetNumber: any,
-  DoctorType: string,
-  hiringDate: string,
-  startSchedule: string,
-  endSchedule: string
+  subscription_type: string,
+  subscription_amount: number,
+  subscription_time: string,
+  subscription_startDate: string,
+  subscription_endDate: string
 }
 
 @Component({

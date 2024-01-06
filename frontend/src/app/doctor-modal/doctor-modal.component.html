@@ -1,120 +1,95 @@
-<h1 mat-dialog-title class="title">Introduceti datele noului doctor:</h1>
+<h1 mat-dialog-title class="title">Introduceti datele noului client:</h1>
 <div mat-dialog-content>
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label class="required">Specializare medicala</mat-label>
-      <input matInput [(ngModel)]="data.medicalSpeciality" />
+      <mat-label>Nume</mat-label>
+      <input matInput [(ngModel)]="data.name" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label class="required">Nume</mat-label>
-      <input matInput [(ngModel)]="data.lastName" />
+      <mat-label>Telefon</mat-label>
+      <input matInput [(ngModel)]="data.phone" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label class="required">Prenume</mat-label>
-      <input matInput [(ngModel)]="data.firstName" />
+      <mat-label>Adresa</mat-label>
+      <input matInput [(ngModel)]="data.address" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label>CNP</mat-label>
-      <input matInput [(ngModel)]="data.cnp" />
-    </mat-form-field>
-  </div>
-
-  <div class="input_container">
-    <mat-form-field appearance="fill">
-      <mat-label>Data nasterii</mat-label>
-      <input matInput [(ngModel)]="data.birthDate" />
-    </mat-form-field>
-  </div>
-
-  <div class="input_container">
-    <mat-form-field appearance="fill">
-      <mat-label>Sex</mat-label>
-      <input matInput [(ngModel)]="data.sex" />
-    </mat-form-field>
-  </div>
-
-  <div class="input_container">
-    <mat-form-field appearance="fill">
-      <mat-label class="required">Numar de telefon</mat-label>
-      <input matInput [(ngModel)]="data.phoneNumber" />
-    </mat-form-field>
-  </div>
-
-  <div class="input_container">
-    <mat-form-field appearance="fill">
-      <mat-label class="required">Adresa de email</mat-label>
+      <mat-label>Email</mat-label>
       <input matInput [(ngModel)]="data.email" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Tip aboanament</mat-label>
+      <input matInput [(ngModel)]="data.subscription_type" />
+    </mat-form-field> -->
     <mat-form-field appearance="fill">
-      <mat-label>Judet</mat-label>
-      <input matInput [(ngModel)]="data.county" />
+      <mat-label>Tip aboanament</mat-label>
+      <select matNativeControl required [(ngModel)]="data.subscription_type">
+        <option value="SILVER">SILVER</option>
+        <option value="GOLD">GOLD</option>
+        <option value="BRONZE">BRONZE</option>
+      </select>
     </mat-form-field>
   </div>
 
   <div class="input_container">
     <mat-form-field appearance="fill">
-      <mat-label>Oras</mat-label>
-      <input matInput [(ngModel)]="data.city" />
+      <mat-label>Pret lunar pentru abonament</mat-label>
+      <input matInput [(ngModel)]="data.subscription_amount" />
     </mat-form-field>
   </div>
 
   <div class="input_container">
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Perioada abonamentului</mat-label>
+      <input matInput [(ngModel)]="data.subscription_time" />
+    </mat-form-field> -->
     <mat-form-field appearance="fill">
-      <mat-label>Strada</mat-label>
-      <input matInput [(ngModel)]="data.street" />
+      <mat-label>Perioada abonamentului</mat-label>
+      <select matNativeControl required [(ngModel)]="data.subscription_time">
+        <option value="Lunar">Lunar</option>
+        <option value="Zilnic">Zilnic</option>
+      </select>
     </mat-form-field>
   </div>
 
   <div class="input_container">
-    <mat-form-field appearance="fill">
-      <mat-label>Numar</mat-label>
-      <input matInput [(ngModel)]="data.streetNumber" />
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Data incepere abonament</mat-label>
+      <input matInput [(ngModel)]="data.subscription_startDate" />
+    </mat-form-field> -->
+    <mat-form-field>
+      <mat-label>Data incepere abonament</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="data.subscription_startDate">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   </div>
 
   <div class="input_container">
-    <mat-form-field appearance="fill">
-      <mat-label class="required">Calificarea(primar/specialist)</mat-label>
-      <input matInput [(ngModel)]="data.DoctorType" />
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Data expirare abonament</mat-label>
+      <input matInput [(ngModel)]="data.subscription_endDate" />
+    </mat-form-field> -->
+    <mat-form-field>
+      <mat-label>Data expirare abonament</mat-label>
+      <input matInput [matDatepicker]="picker2" [(ngModel)]="data.subscription_endDate">
+      <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
     </mat-form-field>
   </div>
-
-  <div class="input_container">
-    <mat-form-field appearance="fill">
-      <mat-label>Data angajarii</mat-label>
-      <input matInput [(ngModel)]="data.hiringDate" />
-    </mat-form-field>
-  </div>
-
-
-  <div class="input_container">
-    <mat-form-field appearance="fill">
-      <mat-label class="required">Ora incepere program</mat-label>
-      <input matInput [(ngModel)]="data.startSchedule" />
-    </mat-form-field>
-  </div>
-
-
-  <div class="input_container">
-    <mat-form-field appearance="fill">
-      <mat-label>Ora incheiere program</mat-label>
-      <input matInput [(ngModel)]="data.endSchedule" />
-    </mat-form-field>
-  </div>
-
 
 </div>
 <div mat-dialog-actions class="buttons">

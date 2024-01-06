@@ -32,40 +32,58 @@ let clients = {
     );
   },
 
-  // addDoctor(req, res, next) {
-  //   let medicalSpeciality = req.body.params.medicalSpeciality;
-  //   let lastName = req.body.params.lastName;
-  //   let firstName = req.body.params.firstName;
-  //   let cnp = req.body.params.cnp;
-  //   let birthDate = req.body.params.birthDate;
-  //   let sex = req.body.params.sex;
-  //   let phoneNumber = req.body.params.phoneNumber;
-  //   let email = req.body.params.email;
-  //   let county = req.body.params.county;
-  //   let city = req.body.params.city;
-  //   let street = req.body.params.street;
-  //   let streetNumber = req.body.params.streetNumber;
-  //   let doctorType = req.body.params.doctorType;
-  //   let hiringDate = req.body.params.hiringDate;
-  //   let startSchedule = req.body.params.startSchedule;
-  //   let endSchedule = req.body.params.endSchedule;
+  addClient1(req, res, next) {
+    let subscription_type = req.body.params.subscription_type;
+    let subscription_amount = req.body.params.subscription_amount;
+    let subscription_time = req.body.params.subscription_time;
+    let subscription_startDate = req.body.params.subscription_startDate;
+    let subscription_endDate = req.body.params.subscription_endDate;
 
-  //   console.log(medicalSpeciality);
+    mysql.query(
+      // `INSERT INTO tblAbonament (Tip_abonament, Pret_lunar, Perioada_abonament, 
+      //   Data_incepere, Data_expirare)
+      //  VALUES ('${subscription_type}', ${subscription_amount}, '${subscription_time}', 
+      //  '${subscription_startDate}', '${subscription_endDate}');`,
+      `INSERT INTO tblAbonament (Tip_abonament, Pret_lunar, Perioada_abonament, Data_incepere, Data_expirare)
+      VALUES ('${subscription_type}', ${subscription_amount}, '${subscription_time}', 
+      '${subscription_startDate}', '${subscription_endDate}');`,
+      (error, result) => {
+        if (error) {
+          throw error;
+        }
+      }
+    );
+  },
 
-  //   mysql.query(
-  //     `INSERT INTO Doctors (MedicalSpecialityID, LastName, FirstName, SSN, Sex,
-  //       PhoneNumber, Email, County, City, Street, DoctorType,
-  //       StartSchedule, EndSchedule)
-  //     VALUES ('${medicalSpeciality}', '${lastName}', '${firstName}', '${cnp}',
-  //      '${sex}', '${phoneNumber}', '${email}', '${county}', '${city}', '${street}', '${doctorType}', '${startSchedule}',
-  //      '${endSchedule}');`,
-  //     (error, result) => {
-  //       if (error) {
-  //         throw error;
-  //       }
-  //     }
-  //   );
-  // },
+  addClient2(req, res, next) {
+    mysql.query(
+      `SET @lastAbonamentId = LAST_INSERT_ID();`,
+      (error, result) => {
+        if (error) {
+          throw error;
+        }
+      }
+    );
+  },
+
+  addClient3(req, res, next) {
+    let name = req.body.params.name;
+    let phone = req.body.params.phone;
+    let address = req.body.params.address;
+    let email = req.body.params.email;
+
+    mysql.query(
+      // `INSERT INTO tblClienti (Nume, Telefon, Adresa, Email, id_abonament)
+      // VALUES ('${name}', '${phone}', '${address}', '${email}', @lastAbonamentId);`,
+      `INSERT INTO tblClienti (Nume, Telefon, Adresa, Email, id_abonament)
+      VALUES ('${name}', '${phone}', '${address}', '${email}', @lastAbonamentId);`,
+      (error, result) => {
+        if (error) {
+          throw error;
+        }
+      }
+    );
+  },
 
   deleteClient(req, res, next) {
     let id = req.body.params.id;
