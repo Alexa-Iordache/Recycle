@@ -6,22 +6,14 @@
         [dataSource]="clientInfo"
         class="mat-elevation-z8 demo-table"
       >
-
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>Id</th>
-        <td mat-cell *matCellDef="let element">
-          <div *ngIf="editMode === false || element.ClientID !== idToEdit">
-            {{ element.ClientID }}
-          </div>
-          <mat-form-field
-            appearance="fill"
-            *ngIf="editMode === true && element.ClientID === idToEdit"
-          >
-            <mat-label> {{ element.ClientID }}</mat-label>
-            <input matInput [(ngModel)]="element.ClientID" />
-          </mat-form-field>
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let element">
+            <div>
+              {{ element.ClientID }}
+            </div>
+          </td>
+        </ng-container>
 
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>Nume</th>
@@ -81,8 +73,16 @@
               appearance="fill"
               *ngIf="editMode === true && element.ClientID === idToEdit"
             >
-              <mat-label> {{ element.Tip_abonament }}</mat-label>
-              <input matInput [(ngModel)]="element.Tip_abonament" />
+              <mat-label>Tip abonament</mat-label>
+              <select
+                matNativeControl
+                required
+                [(ngModel)]="element.Tip_abonament"
+              >
+                <option value="SILVER">SILVER</option>
+                <option value="GOLD">GOLD</option>
+                <option value="BRONZE">BRONZE</option>
+              </select>
             </mat-form-field>
           </td>
         </ng-container>
@@ -90,11 +90,29 @@
         <ng-container matColumnDef="button">
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element">
-            <button mat-raised-button (click)="deleteClient(element.ClientID)" class="delete_button">Sterge</button>
-          <button mat-raised-button *ngIf="editMode === false || element.ClientID !== idToEdit"
-            (click)="editClient(element.ClientID)" class="edit_button">Editeaza</button>
-          <button mat-raised-button *ngIf="editMode === true && element.ClientID === idToEdit"
-            (click)="saveNewClient(element)" class="edit_button">Salveaza</button>
+            <button
+              mat-raised-button
+              (click)="deleteClient(element.ClientID)"
+              class="delete_button"
+            >
+              Sterge
+            </button>
+            <button
+              mat-raised-button
+              *ngIf="editMode === false || element.ClientID !== idToEdit"
+              (click)="editClient(element.ClientID)"
+              class="edit_button"
+            >
+              Editeaza
+            </button>
+            <button
+              mat-raised-button
+              *ngIf="editMode === true && element.ClientID === idToEdit"
+              (click)="saveNewClient(element)"
+              class="edit_button"
+            >
+              Salveaza
+            </button>
           </td>
         </ng-container>
 

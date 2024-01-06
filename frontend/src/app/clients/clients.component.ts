@@ -161,7 +161,6 @@ export class ClientsComponent implements OnInit {
 
   saveNewClient(element: any): void {
     console.log('s a apasat butonul de save');
-    console.log(element);
 
     let paramsEditClient = {
       id: element.ClientID,
@@ -171,6 +170,11 @@ export class ClientsComponent implements OnInit {
       subscription: element.Tip_abonament,
     };
 
+    console.log(paramsEditClient);
+
+    // salveaza clientului dupa editare se face in 3 pasi,
+    // intrucat aveam nevoie de 3 query-uri diferite pentru
+    // a actualiza atat tblClienti, cat si tblAbonament
     this.rpcService.callRPC(
       'clients.editClient',
       paramsEditClient,
@@ -180,59 +184,35 @@ export class ClientsComponent implements OnInit {
           console.log(error);
           return;
         }
-
-        this.getClients();
       }
     );
 
+    this.rpcService.callRPC(
+      'clients.editClient2',
+      paramsEditClient,
+      (error: any, res: any) => {
+        console.log('intra in edit');
+        if (error) {
+          console.log(error);
+          return;
+        }
+      }
+    );
+
+    this.rpcService.callRPC(
+      'clients.editClient3',
+      paramsEditClient,
+      (error: any, res: any) => {
+        console.log('intra in edit');
+        if (error) {
+          console.log(error);
+          return;
+        }
+      }
+    );
+
+    this.getClients();
+
     this.editMode = false;
   }
-
-  // saveNewClient(element: any): void {
-  //   console.log('s-a apasat butonul de save');
-
-  //   let paramsGetClientName= {
-  //     name: element.Nume,
-  //   };
-
-  //   this.rpcService.callRPC(
-  //     'clients.getSpecialityName',
-  //     paramsGetSpeciatilyName,
-  //     (error: any, res: any) => {
-  //       console.log('intra in getSpecialityName');
-  //       if (error) {
-  //         console.log(error);
-  //         return;
-  //       }
-  //       this.specialityID = res.result;
-  //       console.log(this.specialityID[0].MedicalSpecialityID);
-  //       this.idConvert = this.specialityID[0].MedicalSpecialityID;
-  //     }
-  //   );
-
-  //   let paramsEditDoctor = {
-  //     id: element.DoctorID,
-  //     medicalSpecialityID: this.idConvert,
-  //     lastName: element.LastName,
-  //     firstName: element.FirstName,
-  //     phoneNumber: element.PhoneNumber,
-  //     email: element.Email,
-  //     doctorType: element.DoctorType,
-  //   };
-
-  //   this.rpcService.callRPC(
-  //     'doctors.editDoctor',
-  //     paramsEditDoctor,
-  //     (error: any, res: any) => {
-  //       console.log('intra in edit');
-  //       console.log(paramsEditDoctor.medicalSpecialityID);
-  //       if (error) {
-  //         console.log(error);
-  //         return;
-  //       }
-  //       this.getDoctors();
-  //     }
-  //   );
-  //   this.editMode = false;
-  // }
 }

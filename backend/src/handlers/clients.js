@@ -1,3 +1,4 @@
+const { subscribe } = require("../api");
 const mysql = require("../mysql");
 
 let clients = {
@@ -52,11 +53,11 @@ let clients = {
   //   console.log(medicalSpeciality);
 
   //   mysql.query(
-  //     `INSERT INTO Doctors (MedicalSpecialityID, LastName, FirstName, SSN, Sex, 
-  //       PhoneNumber, Email, County, City, Street, DoctorType, 
-  //       StartSchedule, EndSchedule) 
+  //     `INSERT INTO Doctors (MedicalSpecialityID, LastName, FirstName, SSN, Sex,
+  //       PhoneNumber, Email, County, City, Street, DoctorType,
+  //       StartSchedule, EndSchedule)
   //     VALUES ('${medicalSpeciality}', '${lastName}', '${firstName}', '${cnp}',
-  //      '${sex}', '${phoneNumber}', '${email}', '${county}', '${city}', '${street}', '${doctorType}', '${startSchedule}', 
+  //      '${sex}', '${phoneNumber}', '${email}', '${county}', '${city}', '${street}', '${doctorType}', '${startSchedule}',
   //      '${endSchedule}');`,
   //     (error, result) => {
   //       if (error) {
@@ -81,16 +82,55 @@ let clients = {
 
   editClient(req, res, next) {
     let id = req.body.params.id;
-    let name = req.body.params.name;
-    let phone = req.body.params.phone;
-    let address = req.body.params.address;
     let subscription = req.body.params.subscription;
 
     mysql.query(
-      `UPDATE tblClienti
-            SET Nume = '${name}', Telefon = '${phone}', 
-            Adresa = '${address}', Tip_abonament = '${subscription}',
-            WHERE ClientID = '${id}'`,
+      `UPDATE tblClienti AS C
+      INNER JOIN tblAbonament AS A ON C.id_abonament = A.idAbonament
+      SET C.id_abonament = (
+          SELECT idAbonament
+          FROM tblAbonament
+          WHERE Tip_abonament = '${subscription}' AND A.idAbonament = C.id_abonament
+          LIMIT 1
+      )
+      WHERE C.ClientID = ${id};`,
+      (error, result) => {
+        if (error) {
+          throw error;
+        }
+      }
+    );
+  },
+
+  editClient2(req, res, next) {
+    let id = req.body.params.id;
+    let name = req.body.params.name;
+    let phone = req.body.params.phone;
+    let address = req.body.params.address;
+
+    mysql.query(
+      `UPDATE tblClienti AS C INNER JOIN tblAbonament AS A 
+    ON C.id_abonament = A.idAbonament
+    SET C.Nume = '${name}', C.Telefon = '${phone}', C.Adresa = '${address}'
+    WHERE C.ClientID = ${id};`,
+      (error, result) => {
+        if (error) {
+          throw error;
+        }
+      }
+    );
+  },
+
+  editClient3(req, res, next) {
+    let id = req.body.params.id;
+    let subscription = req.body.params.subscription;
+
+    mysql.query(
+      `UPDATE tblAbonament AS A INNER JOIN tblClienti AS C 
+      ON A.idAbonament = C.id_abonament
+      SET A.Tip_abonament = '${subscription}'
+      WHERE C.ClientID = ${id}
+      LIMIT 1;`,
       (error, result) => {
         if (error) {
           throw error;
