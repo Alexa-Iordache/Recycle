@@ -44,39 +44,21 @@ let requests = {
     );
   },
 
-  // editRequests(req, res, next) {
-  //   let startDate = req.body.params.startDate;
-  //   let collectDate = req.body.params.endDate;
-  //   let phase = req.body.params.phase;
+  editRequest(req, res, next) {
+    let startDate = req.body.params.startDate;
+    let collectDate = req.body.params.collectDate;
+    let phase = req.body.params.phase;
 
-  //   mysql.query(
-  //     `UPDATE tblCereriColectare
-  //           SET Data_cerere = '${startDate}', Data_coelctare = '${collectDate}', Etapa = '${phase}';`,
-  //     (error, result) => {
-  //       if (error) {
-  //         throw err;
-  //       }
-  //     }
-  //   );
-  // },
-
-  // createRequestsTable(req, res, next) {
-  //   mysql.query(
-  //     `SELECT Data_cerere, Data_colectare, Etaoa
-  //       FROM tblCereriColecatre F;`,
-
-  //     (error, result) => {
-  //       if (result.length == 0) {
-  //         res.json({
-  //           id: 1,
-  //           error: "does not exist any requests",
-  //           result: null,
-  //         });
-  //       }
-  //       res.json({ id: 1, error: null, result: result });
-  //     }
-  //   );
-  // },
+    mysql.query(
+      `UPDATE tblCereriColectare
+            SET Data_cerere = '${startDate}', Data_colectare = '${collectDate}', Etapa = '${phase}';`,
+      (error, result) => {
+        if (error) {
+          throw err;
+        }
+      }
+    );
+  },
 };
 
 module.exports = requests;

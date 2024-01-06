@@ -6,10 +6,9 @@ import { ModalRequestsComponent } from '../modal-requests/modal-requests.compone
 @Component({
   selector: 'app-requests',
   templateUrl: './requests.component.html',
-  styleUrls: ['./requests.component.scss']
+  styleUrls: ['./requests.component.scss'],
 })
 export class RequestsComponent implements OnInit {
-
   requestInfo: any;
   startDate = '';
   collectDate = '';
@@ -19,29 +18,29 @@ export class RequestsComponent implements OnInit {
 
   displayedColumns = ['startDate', 'collectDate', 'phase', 'button'];
 
-  constructor(
-    private rpcService: RpcService,
-    public dialog: MatDialog
-  ) { }
+  constructor(private rpcService: RpcService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-   this.getRequest();
+    this.getRequest();
   }
 
   getRequest(): void {
     let params = {
-      username: 'admin'
-    }
+      username: 'admin',
+    };
 
-    this.rpcService.callRPC('requests.getRequests', params, (err: any, res: any) => {
-
-      if (err || res.error) {
-        console.log('nu s au putut afisa cererile');
-        return;
+    this.rpcService.callRPC(
+      'requests.getRequests',
+      params,
+      (err: any, res: any) => {
+        if (err || res.error) {
+          console.log('nu s au putut afisa cererile');
+          return;
+        }
+        this.requestInfo = res.result;
+        console.log(this.requestInfo);
       }
-      this.requestInfo = res.result;
-      console.log(this.requestInfo);
-    });
+    );
   }
 
   deleteRequest(id: any): void {
@@ -73,7 +72,7 @@ export class RequestsComponent implements OnInit {
       data: {
         startDate: this.startDate,
         collectDate: this.collectDate,
-        phase: this.phase
+        phase: this.phase,
       },
     });
 
@@ -86,7 +85,7 @@ export class RequestsComponent implements OnInit {
       let paramsAddRequests = {
         startDate: result.startDate,
         collectDate: result.collectDate,
-        phase: result.phase
+        phase: result.phase,
       };
 
       //  algoritm pentru a transforma data intr-un format acceptat de MySQL
@@ -118,35 +117,53 @@ export class RequestsComponent implements OnInit {
     });
   }
 
-  // editRequest(id: any): void {
-  //   this.editMode = true;
-  //   this.idToEdit = id;
-  // }
+  editRequest(id: any): void {
+    this.editMode = true;
+    this.idToEdit = id;
+  }
 
-  // saveNewRequest(element: any): void {
-  //   console.log('s a apasat butonul de save');
-  //   console.log(element);
+  saveNewRequest(element: any): void {
+    console.log('s a apasat butonul de save');
 
-  //   let paramsEditRequest = {
-  //     startDate: element.Data_cerere,
-  //     collectDate: element.Data_colectare,
-  //     phase: element.Etapa,
-  //   };
+    let paramsEditRequest = {
+      startDate: element.Data_cerere,
+      collectDate: element.Data_colectare,
+      phase: element.Etapa,
+    };
 
-  //   this.rpcService.callRPC(
-  //     'requests.editRequest',
-  //     paramsEditRequest,
-  //     (error: any, res: any) => {
-  //       console.log('intra in edit');
-  //       if (error) {
-  //         console.log(error);
-  //         return;
-  //       }
+    //  algoritm pentru a transforma data intr-un format acceptat de MySQL
+    let inputDateString = paramsEditRequest.startDate;
+    let inputDate = new Date(inputDateString);
+    let year = inputDate.getUTCFullYear();
+    let month = ('0' + (inputDate.getUTCMonth() + 1)).slice(-2);
+    let day = ('0' + inputDate.getUTCDate()).slice(-2);
+    let formattedDate = `${year}-${month}-${day}`;
+    paramsEditRequest.startDate = formattedDate;
 
-  //       this.getRequest();
-  //     }
-  //   );
+    let inputDateString2 = paramsEditRequest.collectDate;
+    let inputDate2 = new Date(inputDateString2);
+    let year2 = inputDate2.getUTCFullYear();
+    let month2 = ('0' + (inputDate.getUTCMonth() + 1)).slice(-2);
+    let day2 = ('0' + inputDate.getUTCDate()).slice(-2);
+    let formattedDate2 = `${year2}-${month2}-${day2}`;
+    paramsEditRequest.collectDate = formattedDate2;
 
-  //   this.editMode = false;
-  // }
+    console.log(paramsEditRequest);
+
+    this.rpcService.callRPC(
+      'requests.editRequest',
+      paramsEditRequest,
+      (error: any, res: any) => {
+        console.log('intra in edit');
+        if (error) {
+          console.log(error);
+          return;
+        }
+
+        this.getRequest();
+      }
+    );
+
+    this.editMode = false;
+  }
 }

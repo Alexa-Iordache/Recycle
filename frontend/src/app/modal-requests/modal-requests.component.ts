@@ -10,13 +10,12 @@ export interface DialogData {
 @Component({
   selector: 'app-modal-requests',
   templateUrl: './modal-requests.component.html',
-  styleUrls: ['./modal-requests.component.scss']
+  styleUrls: ['./modal-requests.component.scss'],
 })
 export class ModalRequestsComponent {
-
   constructor(
     public dialogRef: MatDialogRef<ModalRequestsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
 
   onNoClick(): void {

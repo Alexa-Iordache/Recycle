@@ -8,22 +8,78 @@
       <ng-container matColumnDef="startDate">
         <th mat-header-cell *matHeaderCellDef>Data cerere</th>
         <td mat-cell *matCellDef="let element">
-          {{ element.Data_cerere.split("T")[0].split("-").reverse().join(".") }}
+          <div *ngIf="editMode === false || element.CerereID !== idToEdit">
+            {{
+              element.Data_cerere.split("T")[0].split("-").reverse().join(".")
+            }}
+          </div>
+          <mat-form-field
+            appearance="fill"
+            *ngIf="editMode === true && element.CerereID === idToEdit"
+          >
+            <mat-label>Data cerere</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker2"
+              [(ngModel)]="element.Data_cerere"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker2"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="collectDate">
         <th mat-header-cell *matHeaderCellDef>Data colectare</th>
         <td mat-cell *matCellDef="let element">
-          {{
-            element.Data_colectare.split("T")[0].split("-").reverse().join(".")
-          }}
+          <div *ngIf="editMode === false || element.CerereID !== idToEdit">
+            {{
+              element.Data_colectare.split("T")[0]
+                .split("-")
+                .reverse()
+                .join(".")
+            }}
+          </div>
+          <mat-form-field
+            appearance="fill"
+            *ngIf="editMode === true && element.CerereID === idToEdit"
+          >
+            <mat-label>Data colectare</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              [(ngModel)]="element.Data_colectare"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="phase">
         <th mat-header-cell *matHeaderCellDef>Etapa</th>
-        <td mat-cell *matCellDef="let element">{{ element.Etapa }}</td>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="editMode === false || element.CerereID !== idToEdit">
+            {{ element.Etapa }}
+          </div>
+          <mat-form-field
+            appearance="fill"
+            *ngIf="editMode === true && element.CerereID === idToEdit"
+          >
+            <mat-label>{{ element.Etapa }}</mat-label>
+            <select matNativeControl required [(ngModel)]="element.Etapa">
+              <option value="CERERE PLASATA">CERERE PLASATA</option>
+              <option value="CERERE CONFIRMATA">CERERE CONFIRMATA</option>
+              <option value="CERERE COMPLETATA">CERERE COMPLETATA</option>
+            </select>
+          </mat-form-field>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="button">
@@ -36,22 +92,22 @@
           >
             Sterge
           </button>
-          <!-- <button
+          <button
             mat-raised-button
-            *ngIf="editMode === false || element.ClientID !== idToEdit"
-            (click)="editRequest(element.ClientID)"
+            *ngIf="editMode === false || element.CerereID !== idToEdit"
+            (click)="editRequest(element.CerereID)"
             class="edit_button"
           >
             Editeaza
           </button>
           <button
             mat-raised-button
-            *ngIf="editMode === true && element.ClientID === idToEdit"
+            *ngIf="editMode === true && element.CerereID === idToEdit"
             (click)="saveNewRequest(element)"
             class="edit_button"
           >
             Salveaza
-          </button> -->
+          </button>
         </td>
       </ng-container>
 
