@@ -21,6 +21,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { RequestsComponent } from './requests/requests.component';
 import { DoctorModalComponent } from './doctor-modal/doctor-modal.component';
 import { ModalRequestsComponent } from './modal-requests/modal-requests.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { ModalRequestsComponent } from './modal-requests/modal-requests.componen
     MatCardModule,
     MatSelectModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -89,6 +89,21 @@ export class RequestsComponent implements OnInit {
         phase: result.phase
       };
 
+      //  algoritm pentru a transforma data intr-un format acceptat de MySQL
+      let var1 = paramsAddRequests.startDate;
+      const inputDate = new Date(var1);
+      const year = inputDate.getFullYear();
+      const month = ('0' + (inputDate.getMonth() + 1)).slice(-2);
+      const day = ('0' + inputDate.getDate()).slice(-2);
+      paramsAddRequests.startDate = `${year}-${month}-${day}`;
+
+      let var2 = paramsAddRequests.collectDate;
+      const inputDate2 = new Date(var1);
+      const year2 = inputDate.getFullYear();
+      const month2 = ('0' + (inputDate.getMonth() + 1)).slice(-2);
+      const day2 = ('0' + inputDate.getDate()).slice(-2);
+      paramsAddRequests.collectDate = `${year2}-${month2}-${day2}`;
+
       this.rpcService.callRPC(
         'requests.addRequest',
         paramsAddRequests,
