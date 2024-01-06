@@ -20,7 +20,8 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-image: url('../../images/medical_records.png');
+  // background-color: #3366ff;
+  background-image: url('../../images/clienti.png');
   background-size: cover;
   background-position: left center;
 }
@@ -29,12 +30,18 @@
   margin-top: 50px;
   margin-left: 20px;
   margin-right: 20px;
-  border-radius: 50px;
+  border-radius: 5px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.scrollable_table {
+  width: 100%;
 }
 
 th.mat-header-cell {
   text-align: center;
-  color: #3366ff;
+  color: #587e5a;
   font-size: larger;
 }
 
@@ -42,4 +49,20 @@ th.mat-header-cell {
 .mat-footer-cell {
   color: rgba(0, 0, 0, .87);
   text-align: center;
+}
+
+.delete_button {
+  margin-right: 10px;
+  background-color: rgb(246, 100, 100);
+}
+
+.edit_button {
+  background-color: rgb(103, 199, 103);
+}
+
+.add_button {
+  background-color: white;
+  align-self: center;
+  margin-top: 30px;
+  max-width: 100px;
 }

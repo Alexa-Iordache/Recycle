@@ -1,0 +1,28 @@
+<h1 mat-dialog-title class="title">Introduceti datele noului tomberon:</h1>
+<div mat-dialog-content>
+  <div class="input_container">
+    <mat-form-field appearance="fill">
+      <mat-label>Data cerere</mat-label>
+      <input matInput [(ngModel)]="data.startDate" />
+    </mat-form-field>
+  </div>
+
+  <div class="input_container">
+    <mat-form-field appearance="fill">
+      <mat-label>Data colectare</mat-label>
+      <input matInput [(ngModel)]="data.collectDate" />
+    </mat-form-field>
+  </div>
+
+  <div class="input_container">
+    <mat-form-field appearance="fill">
+      <mat-label>Etapa</mat-label>
+      <input matInput [(ngModel)]="data.phase" />
+    </mat-form-field>
+  </div>
+
+</div>
+<div mat-dialog-actions class="buttons">
+  <button mat-button (click)="onNoClick()">Anuleaza</button>
+  <button mat-button cdkFocusInitial [mat-dialog-close]="data" class="ok_button">Ok</button>
+</div>

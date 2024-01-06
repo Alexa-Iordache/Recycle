@@ -1,25 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppointmentsComponent } from './appointments/appointments.component';
-import { DoctorsComponent } from './doctors/doctors.component';
-import { FilesComponent } from './files/files.component';
-import { LocationsComponent } from './locations/locations.component';
+import { ClientsComponent } from './clients/clients.component';
+import { RequestsComponent } from './requests/requests.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
-import { PatientsComponent } from './patients/wastebin.component';
-import { SpecialitiesComponent } from './specialities/specialities.component';
-import { StatisticsComponent } from './statistics/statistics.component';
+import { WasteBinComponent } from './wastebin/wastebin.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent},
   { path: 'main-page', component: MainPageComponent },
-  { path: 'doctors', component: DoctorsComponent},
-  { path: 'appointments', component: AppointmentsComponent},
-  { path: 'patients', component: PatientsComponent},
-  { path: 'specialities', component: SpecialitiesComponent},
-  { path: 'statistics', component: StatisticsComponent},
-  { path: 'files', component: FilesComponent },
-  { path: 'locations', component: LocationsComponent },
+  { path: 'clients', component: ClientsComponent},
+  { path: 'wastebin', component: WasteBinComponent},
+  { path: 'requests', component: RequestsComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
   // { path: '**', component: PageNotFoundComponent }
 ];

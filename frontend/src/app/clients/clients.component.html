@@ -1,0 +1,108 @@
+<div class="main_container">
+  <div class="table_container">
+    <div class="scrollable_table">
+      <table
+        mat-table
+        [dataSource]="clientInfo"
+        class="mat-elevation-z8 demo-table"
+      >
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="editMode === false || element.ClientID !== idToEdit">
+            {{ element.ClientID }}
+          </div>
+          <mat-form-field
+            appearance="fill"
+            *ngIf="editMode === true && element.ClientID === idToEdit"
+          >
+            <mat-label> {{ element.ClientID }}</mat-label>
+            <input matInput [(ngModel)]="element.ClientID" />
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Nume</th>
+          <td mat-cell *matCellDef="let element">
+            <div *ngIf="editMode === false || element.ClientID !== idToEdit">
+              {{ element.Nume }}
+            </div>
+            <mat-form-field
+              appearance="fill"
+              *ngIf="editMode === true && element.ClientID === idToEdit"
+            >
+              <mat-label> {{ element.Nume }}</mat-label>
+              <input matInput [(ngModel)]="element.Nume" />
+            </mat-form-field>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="phoneNumber">
+          <th mat-header-cell *matHeaderCellDef>Telefon</th>
+          <td mat-cell *matCellDef="let element">
+            <div *ngIf="editMode === false || element.ClientID !== idToEdit">
+              {{ element.Telefon }}
+            </div>
+            <mat-form-field
+              appearance="fill"
+              *ngIf="editMode === true && element.ClientID === idToEdit"
+            >
+              <mat-label> {{ element.Telefon }}</mat-label>
+              <input matInput [(ngModel)]="element.Telefon" />
+            </mat-form-field>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef>Adresa</th>
+          <td mat-cell *matCellDef="let element">
+            <div *ngIf="editMode === false || element.ClientID !== idToEdit">
+              {{ element.Adresa }}
+            </div>
+            <mat-form-field
+              appearance="fill"
+              *ngIf="editMode === true && element.ClientID === idToEdit"
+            >
+              <mat-label> {{ element.Adresa }}</mat-label>
+              <input matInput [(ngModel)]="element.Adresa" />
+            </mat-form-field>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="subscription">
+          <th mat-header-cell *matHeaderCellDef>Tip abonament</th>
+          <td mat-cell *matCellDef="let element">
+            <div *ngIf="editMode === false || element.ClientID !== idToEdit">
+              {{ element.Tip_abonament }}
+            </div>
+            <mat-form-field
+              appearance="fill"
+              *ngIf="editMode === true && element.ClientID === idToEdit"
+            >
+              <mat-label> {{ element.Tip_abonament }}</mat-label>
+              <input matInput [(ngModel)]="element.Tip_abonament" />
+            </mat-form-field>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="button">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button (click)="deleteClient(element.ClientID)" class="delete_button">Sterge</button>
+          <button mat-raised-button *ngIf="editMode === false || element.ClientID !== idToEdit"
+            (click)="editClient(element.ClientID)" class="edit_button">Editeaza</button>
+          <button mat-raised-button *ngIf="editMode === true && element.ClientID === idToEdit"
+            (click)="saveNewClient(element)" class="edit_button">Salveaza</button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- <button mat-raised-button (click)="addDoctor()" class="add_button">Adauga</button> -->
+</div>

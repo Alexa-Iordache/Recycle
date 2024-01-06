@@ -8,7 +8,7 @@ import { RpcService } from '../services/rpc.service';
   templateUrl: './wastebin.component.html',
   styleUrls: ['./wastebin.component.scss'],
 })
-export class PatientsComponent implements OnInit {
+export class WasteBinComponent implements OnInit {
   wasteBinInfo: any;
   location = '';
   capacity = '';
