@@ -17,9 +17,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { WasteBinComponent } from './wastebin/wastebin.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { RequestsComponent } from './requests/requests.component';
-import { DoctorModalComponent } from './doctor-modal/doctor-modal.component';
+import { ClientModalComponent } from './client-modal/client-modal.component';
 import { ModalRequestsComponent } from './modal-requests/modal-requests.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -33,7 +33,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     WasteBinComponent,
     ModalComponent,
     RequestsComponent,
-    DoctorModalComponent,
+    ClientModalComponent,
     ModalRequestsComponent
   ],
   imports: [

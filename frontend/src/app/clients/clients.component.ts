@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DoctorModalComponent } from '../doctor-modal/doctor-modal.component';
+import { ClientModalComponent } from '../client-modal/client-modal.component';
 import { RpcService } from '../services/rpc.service';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -81,7 +81,7 @@ export class ClientsComponent implements OnInit {
   }
 
   addClient(): void {
-    const dialogRef = this.dialog.open(DoctorModalComponent, {
+    const dialogRef = this.dialog.open(ClientModalComponent, {
       data: {
         name: this.name,
         phone: this.phone,

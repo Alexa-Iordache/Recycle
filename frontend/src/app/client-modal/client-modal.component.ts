@@ -16,14 +16,14 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-doctor-modal',
-  templateUrl: './doctor-modal.component.html',
-  styleUrls: ['./doctor-modal.component.scss']
+  selector: 'app-client-modal',
+  templateUrl: './client-modal.component.html',
+  styleUrls: ['./client-modal.component.scss']
 })
-export class DoctorModalComponent {
+export class ClientModalComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<DoctorModalComponent>,
+    public dialogRef: MatDialogRef<ClientModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) { }
 
