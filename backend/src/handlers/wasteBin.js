@@ -4,7 +4,7 @@ let wasteBin = {
   getWasteBin(req, res, next) {
     mysql.query(`SELECT * FROM tblTomberoane;`, (error, result) => {
       if (result.length == 0) {
-        res.json({ id: 1, error: "does not exist patients", result: null });
+        res.json({ id: 1, error: "does not exist waste bins", result: null });
       }
 
       res.json({ id: 1, error: null, result: result });
@@ -42,7 +42,6 @@ let wasteBin = {
   },
 
   editWasteBin(req, res, next) {
-    let id = req.body.params.id;
     let location = req.body.params.location;
     let capacity = req.body.params.capacity;
     let frequency = req.body.params.frequency;

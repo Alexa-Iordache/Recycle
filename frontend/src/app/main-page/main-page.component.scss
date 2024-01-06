@@ -51,11 +51,9 @@
   background-image: url('../../images/main-page.png');
   background-size: cover;
   background-position: right center;
-  // margin-left: 100px;
 
   .welcome-message {
     width: 500px;
-    // margin-top: 10px;
     margin-bottom: 500px;
     @extend .text-3;
     color: #587e5a;
