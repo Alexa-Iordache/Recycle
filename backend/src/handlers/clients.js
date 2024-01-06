@@ -70,7 +70,7 @@ let clients = {
     let id = req.body.params.id;
     console.log(id);
     mysql.query(
-      `DELETE FROM tblClienti WHERE ClientID = '${id}'`,
+      `DELETE FROM tblClienti WHERE ClientID = '${id}';`,
       (error, result) => {
         if (error) {
           throw error;
