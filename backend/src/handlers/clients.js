@@ -40,12 +40,8 @@ let clients = {
     let subscription_endDate = req.body.params.subscription_endDate;
 
     mysql.query(
-      // `INSERT INTO tblAbonament (Tip_abonament, Pret_lunar, Perioada_abonament, 
-      //   Data_incepere, Data_expirare)
-      //  VALUES ('${subscription_type}', ${subscription_amount}, '${subscription_time}', 
-      //  '${subscription_startDate}', '${subscription_endDate}');`,
       `INSERT INTO tblAbonament (Tip_abonament, Pret_lunar, Perioada_abonament, Data_incepere, Data_expirare)
-      VALUES ('${subscription_type}', ${subscription_amount}, '${subscription_time}', 
+      VALUES ('${subscription_type}', '${subscription_amount}', '${subscription_time}', 
       '${subscription_startDate}', '${subscription_endDate}');`,
       (error, result) => {
         if (error) {
@@ -62,6 +58,7 @@ let clients = {
         if (error) {
           throw error;
         }
+        next(); 
       }
     );
   },
@@ -73,8 +70,6 @@ let clients = {
     let email = req.body.params.email;
 
     mysql.query(
-      // `INSERT INTO tblClienti (Nume, Telefon, Adresa, Email, id_abonament)
-      // VALUES ('${name}', '${phone}', '${address}', '${email}', @lastAbonamentId);`,
       `INSERT INTO tblClienti (Nume, Telefon, Adresa, Email, id_abonament)
       VALUES ('${name}', '${phone}', '${address}', '${email}', @lastAbonamentId);`,
       (error, result) => {

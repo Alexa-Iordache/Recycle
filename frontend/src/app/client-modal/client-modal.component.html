@@ -30,10 +30,6 @@
   </div>
 
   <div class="input_container">
-    <!-- <mat-form-field appearance="fill">
-      <mat-label>Tip aboanament</mat-label>
-      <input matInput [(ngModel)]="data.subscription_type" />
-    </mat-form-field> -->
     <mat-form-field appearance="fill">
       <mat-label>Tip aboanament</mat-label>
       <select matNativeControl required [(ngModel)]="data.subscription_type">
@@ -52,10 +48,6 @@
   </div>
 
   <div class="input_container">
-    <!-- <mat-form-field appearance="fill">
-      <mat-label>Perioada abonamentului</mat-label>
-      <input matInput [(ngModel)]="data.subscription_time" />
-    </mat-form-field> -->
     <mat-form-field appearance="fill">
       <mat-label>Perioada abonamentului</mat-label>
       <select matNativeControl required [(ngModel)]="data.subscription_time">
@@ -66,10 +58,6 @@
   </div>
 
   <div class="input_container">
-    <!-- <mat-form-field appearance="fill">
-      <mat-label>Data incepere abonament</mat-label>
-      <input matInput [(ngModel)]="data.subscription_startDate" />
-    </mat-form-field> -->
     <mat-form-field>
       <mat-label>Data incepere abonament</mat-label>
       <input matInput [matDatepicker]="picker" [(ngModel)]="data.subscription_startDate">
@@ -79,10 +67,6 @@
   </div>
 
   <div class="input_container">
-    <!-- <mat-form-field appearance="fill">
-      <mat-label>Data expirare abonament</mat-label>
-      <input matInput [(ngModel)]="data.subscription_endDate" />
-    </mat-form-field> -->
     <mat-form-field>
       <mat-label>Data expirare abonament</mat-label>
       <input matInput [matDatepicker]="picker2" [(ngModel)]="data.subscription_endDate">
