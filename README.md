@@ -21,7 +21,7 @@ Pași realizare proiect
 15. Am creat pagina de **meniu principal** -> de unde te poti duce in pagina de abonamente/ tomberoane/ cereri colecare
 16. Am creat pagina de tomberoane, unde e un tabel cu toate tomberoanele, se poate adauga unul nou sau se poate sterge si se poate edita un rand.
     !!! **important** toate acestea sunt facute pentru admin
-17. Am creat pagina de clienti, unde se pot vedea datele clientilor impreuna cu tipul de abonament pe care il are fiecare. Exista butoante de adaugare/ stergere/ edit, dar momentan nu functioneaza
-18. Am creat pagina de cerere colectare Exista butoante de adaugare/ stergere, dar momentan functioneaza doar butonul de stergere.
+17. Am creat pagina de clienti, unde se pot vedea datele clientilor impreuna cu tipul de abonament pe care il are fiecare. Exista butoante de adaugare/ stergere/ edit.
+18. Am creat pagina de cerere colectare Exista butoante de adaugare/ stergere/ edit, functioneaza toate mai putin butonul de add. 
     
 **OBS**: Am stars cheia straina din tblCereriColectare si am redefinit-o folosind on cascade 
